@@ -1,17 +1,20 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
-    apiKey: "AIzaSyAay0wFEdshF6TPB9yQJqglOv0MWXruq1A",
-    authDomain: "kim-and-wilson-project-two.firebaseapp.com",
-    projectId: "kim-and-wilson-project-two",
-    storageBucket: "kim-and-wilson-project-two.appspot.com",
-    messagingSenderId: "1085169351756",
-    appId: "1:1085169351756:web:edb1f47f2be78f2ae548e9"
-};
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDa93oAfc8snkghcMGF9H-r5_OWuT0chB4",
+    authDomain: "project-pronia.firebaseapp.com",
+    databaseURL: "https://project-pronia-default-rtdb.firebaseio.com",
+    projectId: "project-pronia",
+    storageBucket: "project-pronia.appspot.com",
+    messagingSenderId: "431516586380",
+    appId: "1:431516586380:web:6218957a71d4bee98106a9"
+  };
 
 // Initialize Firebase
 const firebaseInfo = initializeApp(firebaseConfig);
+
+  export default firebaseInfo;
