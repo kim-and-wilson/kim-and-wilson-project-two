@@ -24,14 +24,14 @@ const addToDatabase = (key, value) => {
 };
 
 
-  
+// INITIAL DATABASE PRODUCT AND CATEGORIES PUSH
 
 // const productInventory = 
 //   {
 //     title: 'American Marigold',
 //     url: 'assets/p2/jpeg',
 //     price: 23.45,
-//     stock: 20
+//     stock: 0
 //   };
 // addToDatabase("inventory", productInventory);
 
@@ -118,3 +118,5 @@ const addToDatabase = (key, value) => {
 //   }
 // };
 // addToDatabase("categories", categories);
+
+
