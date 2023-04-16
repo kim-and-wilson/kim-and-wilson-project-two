@@ -2,7 +2,7 @@
 
 // ALSO don't forget, we're using modules, which means we'll need to turn on our Live Server!
 import firebaseInfo from './firebaseConfig.js';
-import { getDatabase, ref, push } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js';
+import { getDatabase, ref, get } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js';
 
 const database = getDatabase(firebaseInfo);
 const dbRef = ref(database);
@@ -16,12 +16,12 @@ const dbRef = ref(database);
   // message: Loading module from “http://127.0.0.1:5500/day4/functional-methods-codealong-STARTER/firebaseConfig” was blocked because of a disallowed MIME type (“text/html”).
 
 
-const addToDatabase = (key, value) => {
-  // Create a function that we pass  the info we want to store and the property name under which we want to store it
-  const customRef = ref(database, key);
-  // Set our info as the value of our ref
-    push (customRef, value);
-};
+// const addToDatabase = (key, value) => {
+//   // Create a function that we pass  the info we want to store and the property name under which we want to store it
+//   const customRef = ref(database, key);
+//   // Set our info as the value of our ref
+//     push (customRef, value);
+// };
 
 
 // INITIAL DATABASE PRODUCT AND CATEGORIES PUSH
@@ -120,3 +120,16 @@ const addToDatabase = (key, value) => {
 // addToDatabase("categories", categories);
 
 
+// FILTER SECTION MVP2
+
+get(dbRef).then((snapshot) => {
+  // One of the returned values is a method called ".exists()", which will return a boolean value for whether there is a returned value from our "get" function 
+  if (snapshot.exists()) {
+    // We call `.val()` on our snapshot to get the contents of our data. The returned data will be an object that we can  iterate through later
+    console.log(snapshot.val())
+  } else {
+    console.log("No data available")
+  }
+}).catch((error) => {
+  console.log(error)
+})
