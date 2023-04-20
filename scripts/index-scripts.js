@@ -6,64 +6,57 @@ import { getDatabase, ref, onValue } from 'https://www.gstatic.com/firebasejs/9.
 
 const database = getDatabase(firebaseInfo);
 
-const inventoryRef = ref(database, '/inventory');
 
+// ALL DISPLAY ON PAGE LOAD
+
+const inventoryRef = ref(database, '/inventory');
 //console.log(inventoryRef); success
 
 onValue(inventoryRef, (data) => {
 //console.log(data.val()); success
 
-const inventoryData = data.val();
+  const inventoryData = data.val();
 // console.log(inventoryData);
 
-for (let key in inventoryData) {
-//  console.log(inventoryData[key]); success
+  for (let key in inventoryData) {
+  //  console.log(inventoryData[key]); success
 
-const prodUrl = inventoryData[key].url
-const prodAlt = inventoryData[key].alt
-const prodTitle = inventoryData[key].title
-const prodPrice = inventoryData[key].price
+    const prodUrl = inventoryData[key].url
+    const prodAlt = inventoryData[key].alt
+    const prodTitle = inventoryData[key].title
+    const prodPrice = inventoryData[key].price 
+    //console.log (prodUrl, prodAlt, prodTitle, prodPrice) success
 
-//console.log (prodUrl, prodAlt, prodTitle, prodPrice) success
+    const prodCard = document.createElement('li');
+    prodCard.id = key
+    //console.log(listItem) success
 
-const prodCard = document.createElement('li');
-prodCard.id = key
-//console.log(listItem) success
+    const prodImage = document.createElement('img');
+    prodImage.src = prodUrl
+    prodImage.alt = prodAlt
 
-const prodImage = document.createElement('img');
-prodImage.src = prodUrl
-prodImage.alt = prodAlt
+    const itemTitle = document.createElement('h4');
+    itemTitle.innerHTML = prodTitle
 
-const itemTitle = document.createElement('h3');
-itemTitle.innerHTML = prodTitle
+    const itemPrice = document.createElement('p');
+    itemPrice.innerHTML = prodPrice
 
-const itemPrice = document.createElement('p');
-itemPrice.innerHTML = prodPrice
+    const likeButton = document.createElement('button');
+    likeButton.innerText = "♥"
 
-const likeButton = document.createElement('button');
-likeButton.innerText = "♥"
+    const addButton = document.createElement('button');
+    addButton.innerText = "+"
 
-const addButton = document.createElement('button');
-addButton.innerText = "+"
+    prodCard.append(prodImage, itemTitle, itemPrice, likeButton, addButton);
 
-prodCard.append(prodImage, itemTitle, itemPrice, likeButton, addButton);
-
-document.querySelector('#inventory').append(prodCard)
-
-}
+    document.querySelector('#inventory').append(prodCard)
+  }
 })
 
 
+// BUTTON FILTER SECTION
+
 const dbRef = ref(database);
-
-// Errors you may encounter while building firebase database
-// Error #1 - missing type="module" in our HTML
-  // message: Uncaught SyntaxError: import declarations may only appear at top level of a module
-// Error #2 - our firebase-database and firebase-app versions didn't match
-  // message: Uncaught Error: Service database is not available
-// Error #3 - we tried to link to firebase.js without the js in scripts.js file
-  // message: Loading module from “http://127.0.0.1:5500/day4/functional-methods-codealong-STARTER/firebaseConfig” was blocked because of a disallowed MIME type (“text/html”).
-
 
 const addToDatabase = (key, value) => {
   // Create a function that we pass  the info we want to store and the property name under which we want to store it
@@ -72,7 +65,47 @@ const addToDatabase = (key, value) => {
     onValue (customRef, value);
 };
 
-// FEATURED PRODUCT FILTER
+// ALL PRODUCT FILTER BUTTON
+
+const allButton = document.getElementById('all-button');
+allButton.addEventListener('click', (e) => {
+  onValue(dbRef, function (data) {
+    const allProducts = data.val();
+    const inventory = Object.values(allProducts.inventory)
+    const allFilterProducts = inventory.filter((item) => {
+      return item.category.all === true;
+    });
+    console.log(allFilterProducts); 
+
+
+    const displayAllItems = (displayAll) => {
+
+      const inventoryElement = document.querySelector('#inventory')
+      inventoryElement.innerHTML = '';
+
+
+      allFilterProducts.forEach((item) => {
+        console.log(item)
+        const newLi = document.createElement('li');
+        const imgElement = document.createElement('img');
+        newLi.innerHTML = `
+        <img src=${item.url} alt="${item.alt}" />
+        <h4>${item.title}</h4>
+        <p>${item.price}<p>
+        <button>${item.heartIcon}</button>
+        <button>${item.plusIcon}</button>
+        `
+        newLi.append(imgElement);
+        inventoryElement.append(newLi)
+      });
+    }
+    displayAllItems();
+  });
+});
+
+// FEATURED PRODUCT FILTER BUTTON
+
+
 
 const featuredButton = document.getElementById('featured-button');
 featuredButton.addEventListener('click', (e) => {
@@ -84,12 +117,10 @@ featuredButton.addEventListener('click', (e) => {
     });
     // console.log(featuredProducts); 
   
-
     const displayFeaturedItems = (displayFeatured) => {
 
       const inventoryElement = document.querySelector('#inventory')
       inventoryElement.innerHTML = '';
-
 
       featuredProducts.forEach((item) => {
         console.log(item)
@@ -99,6 +130,8 @@ featuredButton.addEventListener('click', (e) => {
         <img src=${item.url} alt="${item.alt}" />
         <h4>${item.title}</h4>
         <p>${item.price}<p>
+        <button>${item.heartIcon}</button>
+        <button>${item.plusIcon}</button>
         `
         newLi.append(imgElement);
         inventoryElement.append(newLi)
@@ -109,7 +142,7 @@ featuredButton.addEventListener('click', (e) => {
 });
 
 
-// BESTSELLER PRODUCT FILTER
+// BESTSELLER PRODUCT FILTER BUTTON
 
 const bestsellerButton = document.getElementById('bestseller-button');
 bestsellerButton.addEventListener('click', (e) => {
@@ -126,7 +159,6 @@ bestsellerButton.addEventListener('click', (e) => {
       const inventoryElement = document.querySelector('#inventory')
       inventoryElement.innerHTML = '';
 
-
       bestsellerProducts.forEach((item) => {
         console.log(item)
         const newLi = document.createElement('li');
@@ -135,6 +167,8 @@ bestsellerButton.addEventListener('click', (e) => {
         <img src=${item.url} alt="${item.alt}" />
         <h4>${item.title}</h4>
         <p>${item.price}<p>
+        <button>${item.heartIcon}</button>
+        <button>${item.plusIcon}</button>
         `
         newLi.append(imgElement);
         inventoryElement.append(newLi)
@@ -145,7 +179,7 @@ bestsellerButton.addEventListener('click', (e) => {
 });
 
 
-// LATEST PRODUCT FILTER
+// LATEST PRODUCT FILTER BUTTON
       
 const latestButton = document.getElementById('latest-button');
 latestButton.addEventListener('click', (e) => {
@@ -162,7 +196,6 @@ latestButton.addEventListener('click', (e) => {
       const inventoryElement = document.querySelector('#inventory')
       inventoryElement.innerHTML = '';
 
-
       latestProducts.forEach((item) => {
         console.log(item)
         const newLi = document.createElement('li');
@@ -171,6 +204,8 @@ latestButton.addEventListener('click', (e) => {
         <img src=${item.url} alt="${item.alt}" />
         <h4>${item.title}</h4>
         <p>${item.price}<p>
+        <button>${item.heartIcon}</button>
+        <button>${item.plusIcon}</button>
         `
         newLi.append(imgElement);
         inventoryElement.append(newLi)
