@@ -29,14 +29,33 @@ const featuredButton = document.getElementById('featured-button');
 featuredButton.addEventListener('click', (e) => {
   onValue(dbRef, function (data) {
     const allProducts = data.val();
-    // take inventory object and output the properties into an array
-    // array output will be array will have each object and it's properties [{ alt: "", category:{bestseller:false, featured:true, latest:true}, id:"03", isFavourited:false, price:"30.45", stock:"20", title:"bleeding heart", url:"assets/p3.jpeg"  }]
-
     const inventory = Object.values(allProducts.inventory)
     const featuredProducts = inventory.filter((item) => {
       return item.category.featured === true;
     });
-    console.log(featuredProducts);
+    // console.log(featuredProducts); 
+  
+
+    const displayFeaturedItems = (displayFeatured) => {
+
+      const inventoryElement = document.querySelector('#inventory')
+      inventoryElement.innerHTML = '';
+
+
+      featuredProducts.forEach((item) => {
+        console.log(item)
+        const newLi = document.createElement('li');
+        const imgElement = document.createElement('img');
+        newLi.innerHTML = `
+        <img src=${item.url} alt="${item.alt}" />
+        <h4>${item.title}</h4>
+        <p>${item.price}<p>
+        `
+        newLi.append(imgElement);
+        inventoryElement.append(newLi)
+      });
+    }
+    displayFeaturedItems();
   });
 });
 
@@ -47,14 +66,32 @@ const bestsellerButton = document.getElementById('bestseller-button');
 bestsellerButton.addEventListener('click', (e) => {
   onValue(dbRef, function (data) {
     const allProducts = data.val();
-    // take inventory object and output the properties into an array
-    // array output will be array will have each object and it's properties [{ alt: "", category:{bestseller:false, featured:true, latest:true}, id:"03", isFavourited:false, price:"30.45", stock:"20", title:"bleeding heart", url:"assets/p3.jpeg"  }]
-
     const inventory = Object.values(allProducts.inventory)
     const bestsellerProducts = inventory.filter((item) => {
       return item.category.bestseller === true;
     });
-    console.log(bestsellerProducts);
+    // console.log(bestsellerProducts); filter completed
+
+    const displayBestsellerItems = (displayFeatured) => {
+
+      const inventoryElement = document.querySelector('#inventory')
+      inventoryElement.innerHTML = '';
+
+
+      bestsellerProducts.forEach((item) => {
+        console.log(item)
+        const newLi = document.createElement('li');
+        const imgElement = document.createElement('img');
+        newLi.innerHTML = `
+        <img src=${item.url} alt="${item.alt}" />
+        <h4>${item.title}</h4>
+        <p>${item.price}<p>
+        `
+        newLi.append(imgElement);
+        inventoryElement.append(newLi)
+      });
+    }
+    displayBestsellerItems();
   });
 });
 
@@ -65,14 +102,32 @@ const latestButton = document.getElementById('latest-button');
 latestButton.addEventListener('click', (e) => {
   onValue(dbRef, function (data) {
     const allProducts = data.val();
-    // take inventory object and output the properties into an array
-    // array output will be array will have each object and it's properties [{ alt: "", category:{bestseller:false, featured:true, latest:true}, id:"03", isFavourited:false, price:"30.45", stock:"20", title:"bleeding heart", url:"assets/p3.jpeg"  }]
-
     const inventory = Object.values(allProducts.inventory)
     const latestProducts = inventory.filter((item) => {
       return item.category.latest === true;
     });
     console.log(latestProducts);
+
+    const displayLatestItems = (displayLatest) => {
+
+      const inventoryElement = document.querySelector('#inventory')
+      inventoryElement.innerHTML = '';
+
+
+      latestProducts.forEach((item) => {
+        console.log(item)
+        const newLi = document.createElement('li');
+        const imgElement = document.createElement('img');
+        newLi.innerHTML = `
+        <img src=${item.url} alt="${item.alt}" />
+        <h4>${item.title}</h4>
+        <p>${item.price}<p>
+        `
+        newLi.append(imgElement);
+        inventoryElement.append(newLi)
+      });
+    }
+    displayLatestItems();
   });
 });
 
