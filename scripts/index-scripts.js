@@ -15,7 +15,7 @@ onValue(inventoryRef, (data) => {
 //console.log(data.val()); success
 
 const inventoryData = data.val();
-console.log(inventoryData);
+// console.log(inventoryData);
 
 for (let key in inventoryData) {
 //  console.log(inventoryData[key]); success
