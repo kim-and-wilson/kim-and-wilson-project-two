@@ -57,6 +57,7 @@ $faintblue: #88cce2;
     }
 
     button:active,
+    button:hover,
     button:focus {
         color: $green;
         border: 1px dashed $green;
@@ -72,6 +73,12 @@ $faintblue: #88cce2;
         justify-content: space-between;
     }
 }
+
+.plant-list ul {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
 
 .relative-parent {
     display: flex;
@@ -94,3 +101,38 @@ $faintblue: #88cce2;
     }
 }
 
+#inventory li button
+ {
+  display: inline-block;
+  margin: 10px 5px;
+  top: 0px;
+  right: 0px;
+
+}
+
+#inventory button {
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 30px;
+  background: transparent;
+  border: none;
+  color: black;
+  line-height: 1.6;
+
+
+ 
+}
+
+#inventory button:disabled {
+  color: lightgray;
+  cursor: auto;
+
+}
+
+#inventory button:hover:not([disabled]),
+#inventory button:focus {
+  color: palevioletred;
+}

@@ -520,6 +520,7 @@ img {
   font-size: 22px;
 }
 .product-buttons-section button:active,
+.product-buttons-section button:hover,
 .product-buttons-section button:focus {
   color: #abd373;
   border: 1px dashed #abd373;
@@ -537,6 +538,17 @@ img {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.plant-list ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .relative-parent {
@@ -559,6 +571,36 @@ img {
   padding: 8px;
   width: 25px;
   height: auto;
+}
+
+#inventory li button {
+  display: inline-block;
+  margin: 10px 5px;
+  top: 0px;
+  right: 0px;
+}
+
+#inventory button {
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 30px;
+  background: transparent;
+  border: none;
+  color: black;
+  line-height: 1.6;
+}
+
+#inventory button:disabled {
+  color: lightgray;
+  cursor: auto;
+}
+
+#inventory button:hover:not([disabled]),
+#inventory button:focus {
+  color: palevioletred;
 }
 
 .collection {
