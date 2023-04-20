@@ -75,7 +75,7 @@ allButton.addEventListener('click', (e) => {
     const allFilterProducts = inventory.filter((item) => {
       return item.category.all === true;
     });
-    console.log(allFilterProducts); 
+    // console.log(allFilterProducts); 
 
 
     const displayAllItems = (displayAll) => {
@@ -83,19 +83,18 @@ allButton.addEventListener('click', (e) => {
       const inventoryElement = document.querySelector('#inventory')
       inventoryElement.innerHTML = '';
 
-
       allFilterProducts.forEach((item) => {
         console.log(item)
         const newLi = document.createElement('li');
-        const imgElement = document.createElement('img');
+        // const imgElement = document.createElement('img');
         newLi.innerHTML = `
         <img src=${item.url} alt="${item.alt}" />
         <h4>${item.title}</h4>
         <p>${item.price}<p>
-        <button>${item.heartIcon}</button>
-        <button>${item.plusIcon}</button>
+        <button>♥</button>
+        <button>+</button>
         `
-        newLi.append(imgElement);
+        // newLi.append(imgElement);
         inventoryElement.append(newLi)
       });
     }
@@ -104,8 +103,6 @@ allButton.addEventListener('click', (e) => {
 });
 
 // FEATURED PRODUCT FILTER BUTTON
-
-
 
 const featuredButton = document.getElementById('featured-button');
 featuredButton.addEventListener('click', (e) => {
@@ -125,15 +122,15 @@ featuredButton.addEventListener('click', (e) => {
       featuredProducts.forEach((item) => {
         console.log(item)
         const newLi = document.createElement('li');
-        const imgElement = document.createElement('img');
+        // const imgElement = document.createElement('img');
         newLi.innerHTML = `
         <img src=${item.url} alt="${item.alt}" />
         <h4>${item.title}</h4>
         <p>${item.price}<p>
-        <button>${item.heartIcon}</button>
-        <button>${item.plusIcon}</button>
+        <button>♥</button>
+        <button>+</button>
         `
-        newLi.append(imgElement);
+        // newLi.append(imgElement);
         inventoryElement.append(newLi)
       });
     }
@@ -162,15 +159,15 @@ bestsellerButton.addEventListener('click', (e) => {
       bestsellerProducts.forEach((item) => {
         console.log(item)
         const newLi = document.createElement('li');
-        const imgElement = document.createElement('img');
+        // const imgElement = document.createElement('img');
         newLi.innerHTML = `
         <img src=${item.url} alt="${item.alt}" />
         <h4>${item.title}</h4>
         <p>${item.price}<p>
-        <button>${item.heartIcon}</button>
-        <button>${item.plusIcon}</button>
+        <button>♥</button>
+        <button>+</button>
         `
-        newLi.append(imgElement);
+        // newLi.append(imgElement);
         inventoryElement.append(newLi)
       });
     }
@@ -199,15 +196,15 @@ latestButton.addEventListener('click', (e) => {
       latestProducts.forEach((item) => {
         console.log(item)
         const newLi = document.createElement('li');
-        const imgElement = document.createElement('img');
+        // const imgElement = document.createElement('img');
         newLi.innerHTML = `
         <img src=${item.url} alt="${item.alt}" />
         <h4>${item.title}</h4>
         <p>${item.price}<p>
-        <button>${item.heartIcon}</button>
-        <button>${item.plusIcon}</button>
+        <button>♥</button>
+        <button>+</button>
         `
-        newLi.append(imgElement);
+        // newLi.append(imgElement);
         inventoryElement.append(newLi)
       });
     }
