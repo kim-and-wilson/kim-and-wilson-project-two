@@ -22,6 +22,7 @@ const dbRef = ref(database)
         const prodAlt = item.alt;
         const prodTitle = item.title;
         const prodPrice = item.price;
+        const prodCart = item.icon
 
         const prodCard = document.createElement('li');
         const prodImage = document.createElement('img');
@@ -35,9 +36,11 @@ const dbRef = ref(database)
         itemPrice.innerHTML = prodPrice
 
         const likeButton = document.createElement('button');
+        likeButton.classList.add('likeButton');
         likeButton.innerText = "♥"
 
         const addButton = document.createElement('button');
+        addButton.classList.add('addButton');
         addButton.innerText = "+"
 
         prodCard.append(prodImage, itemTitle, itemPrice, likeButton, addButton);
