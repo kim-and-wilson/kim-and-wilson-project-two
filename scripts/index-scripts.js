@@ -12,8 +12,6 @@ const dbRef = ref(database)
     const inventory = Object.values(allProducts.inventory)
     console.log(inventory)
 
-    // const featuredButton = document.getElementById('featured-button');
-
 
     const displayItems = (displayCategories) => {
       const inventoryElement = document.querySelector('#inventory')
@@ -48,25 +46,52 @@ const dbRef = ref(database)
       });      
     };
 
+    // ALL PRODUCTS FILTER WITH DISPLAY ON LOAD
+    const allButton = document.querySelector('#all-button');
+    allButton.addEventListener('click', function (e) {
+      const allProducts = inventory.filter((item) => {
+        return item.category.all === true;
+      });
+      displayItems(allProducts);
+      // console.log(allProducts)
+    });
 
+    document.addEventListener('DOMContentLoaded', (e) => {
+      allButton.addEventListener('click', function (e) {
+        const allProducts = inventory.filter((item) => {
+          return item.category.all === true;
+        });
+        displayItems(allProducts);
+        // console.log(allProducts)
+      });
+    })
+    allButton.click();
     
+
+    // FEATURED PRODUCTS FILTER
+
     const featuredButton = document.querySelector('#featured-button');
     featuredButton.addEventListener('click', function (e) {
       const featuredProducts = inventory.filter((item) => {
         return item.category.featured === true;
       });
       displayItems(featuredProducts);
-      console.log(featuredProducts)
+      // console.log(featuredProducts)
     });
 
+
+    // BESTSELLER PRODUCTS FILTER
     const bestsellerButton = document.querySelector('#bestseller-button');
     bestsellerButton.addEventListener('click', function (e) {
       const bestsellerProducts = inventory.filter((item) => {
         return item.category.bestseller === true;
       });
       displayItems(bestsellerProducts);
-      console.log(bestsellerProducts)
+      // console.log(bestsellerProducts)
     });
+
+
+    // LATEST PRODUCTS FILTER
 
     const latestButton = document.querySelector('#latest-button');
     latestButton.addEventListener('click', function (e) {
@@ -74,308 +99,6 @@ const dbRef = ref(database)
         return item.category.latest === true;
       });
       displayItems(latestProducts);
-      console.log(latestProducts)
+      // console.log(latestProducts)
     });
  });
-
- 
-
-
-    // const bestsellerProducts = inventory.filter((item) => {
-    //   return item.category.featured === true;
-    // });
-    // const bestsellerButtons = document.querySelector('bestsller-button');
-    // document.addEventListener('click', function (e) {
-    //   // console.log(e)
-    //   displayItems(featuredProducts);
-    // });
-
-
-
-
-
-    // const bestsellerButton = document.getElementById('bestseller-button');
-    // const bestsellerProducts = inventory.filter((item) => {
-    //   return item.category.bestseller === true;
-    // }); 
-    // console.log(bestsellerProducts)
-    
-
-
-    
-    // const bestsellerButton = document.querySelector('featured-button');
-    // document.addEventListener('click', function (e) {
-    //   // console.log(e)
-    //   displayItems(featuredProducts);
-    // });
-    
-
-
-
-
-
-
-
-
-    
-
-      
-
-
-
-
-
-
-
-
-
-
-// ALL DISPLAY ON PAGE LOAD
-
-// const inventoryRef = ref(database, '/inventory');
-// //console.log(inventoryRef); success
-
-// onValue(inventoryRef, (data) => {
-// //console.log(data.val()); success
-
-//   const inventoryData = data.val();
-// // console.log(inventoryData);
-
-//   for (let key in inventoryData) {
-//   //  console.log(inventoryData[key]); success
-
-//     const prodUrl = inventoryData[key].url
-//     const prodAlt = inventoryData[key].alt
-//     const prodTitle = inventoryData[key].title
-//     const prodPrice = inventoryData[key].price 
-//     //console.log (prodUrl, prodAlt, prodTitle, prodPrice) success
-
-//     const prodCard = document.createElement('li');
-//     prodCard.id = key
-//     //console.log(listItem) success
-
-//     const prodImage = document.createElement('img');
-//     prodImage.src = prodUrl
-//     prodImage.alt = prodAlt
-
-//     const itemTitle = document.createElement('h4');
-//     itemTitle.innerHTML = prodTitle
-
-//     const itemPrice = document.createElement('p');
-//     itemPrice.innerHTML = prodPrice
-
-//     const likeButton = document.createElement('button');
-//     likeButton.innerText = "♥"
-
-//     const addButton = document.createElement('button');
-//     addButton.innerText = "+"
-
-//     prodCard.append(prodImage, itemTitle, itemPrice, likeButton, addButton);
-
-//     document.querySelector('#inventory').append(prodCard)
-//   }
-// })
-
-
-// // BUTTON FILTER SECTION
-
-// const dbRef = ref(database);
-
-// const addToDatabase = (key, value) => {
-//   // Create a function that we pass  the info we want to store and the property name under which we want to store it
-//   const customRef = ref(database, key);
-//   // Set our info as the value of our ref
-//     onValue (customRef, value);
-// };
-
-
-// // FEATURED PRODUCT FILTER BUTTON
-
-// const featuredButton = document.getElementById('featured-button');
-// featuredButton.addEventListener('click', (e) => {
-//   onValue(dbRef, function (data) {
-//     const allProducts = data.val();
-//     const inventory = Object.values(allProducts.inventory)
-//     const featuredProducts = inventory.filter((item) => {
-//       return item.category.featured === true;
-//     });
-//     // console.log(featuredProducts); 
-
-//     const displayFeaturedItems = (displayFeatured) => {
-
-//       const inventoryElement = document.querySelector('#inventory')
-//       inventoryElement.innerHTML = '';
-
-//       featuredProducts.forEach((item) => {
-//          const prodUrl = item.url;
-//         const prodAlt = item.alt;
-//         const prodTitle = item.title;
-//         const prodPrice = item.price;
-
-//         const prodCard = document.createElement('li');
-//         const prodImage = document.createElement('img');
-//         prodImage.src = prodUrl;
-//         prodImage.alt = prodAlt;
-
-//         const itemTitle = document.createElement('h4');
-//         itemTitle.innerHTML = prodTitle;
-
-//         const itemPrice = document.createElement('p');
-//         itemPrice.innerHTML = prodPrice
-
-//         const likeButton = document.createElement('button');
-//         likeButton.innerText = "♥"
-
-//         const addButton = document.createElement('button');
-//         addButton.innerText = "+"
-
-//         prodCard.append(prodImage, itemTitle, itemPrice, likeButton, addButton);
-
-//         document.querySelector('#inventory').append(prodCard)
-//       });
-//     }
-//     displayBestsellerItems();
-//   });
-// });
-
-
-
-// // BESTSELLER PRODUCT FILTER BUTTON
-
-// const bestsellerButton = document.getElementById('bestseller-button');
-// bestsellerButton.addEventListener('click', (e) => {
-//   onValue(dbRef, function (data) {
-//     const allProducts = data.val();
-//     const inventory = Object.values(allProducts.inventory)
-//     const bestsellerProducts = inventory.filter((item) => {
-//       return item.category.bestseller === true;
-//     });
-//     // console.log(bestsellerProducts); filter completed
-
-//     const displayBestsellerItems = (displayFeatured) => {
-
-//       const inventoryElement = document.querySelector('#inventory')
-//       inventoryElement.innerHTML = '';
-
-//       bestsellerProducts.forEach((item) => {
-//         // console.log(item)
-//         const prodUrl = item.url;
-//         const prodAlt = item.alt;
-//         const prodTitle = item.title;
-//         const prodPrice = item.price;
-
-//         const prodCard = document.createElement('li');
-//         const prodImage = document.createElement('img');
-//         prodImage.src = prodUrl;
-//         prodImage.alt = prodAlt;
-
-//         const itemTitle = document.createElement('h4');
-//         itemTitle.innerHTML = prodTitle;
-
-//         const itemPrice = document.createElement('p');
-//         itemPrice.innerHTML = prodPrice
-
-//         const likeButton = document.createElement('button');
-//         likeButton.innerText = "♥"
-
-//         const addButton = document.createElement('button');
-//         addButton.innerText = "+"
-
-//         prodCard.append(prodImage, itemTitle, itemPrice, likeButton, addButton);
-
-//         document.querySelector('#inventory').append(prodCard)
-//       });
-//     }
-//     displayBestsellerItems();
-//   });
-// });
-
-
-// // LATEST PRODUCT FILTER BUTTON
-      
-// const latestButton = document.getElementById('latest-button');
-// latestButton.addEventListener('click', (e) => {
-//   onValue(dbRef, function (data) {
-//     const allProducts = data.val();
-//     const inventory = Object.values(allProducts.inventory)
-//     const latestProducts = inventory.filter((item) => {
-//       return item.category.latest === true;
-//     });
-//     // console.log(latestProducts);
-
-//     const displayLatestItems = (displayLatest) => {
-
-//       const inventoryElement = document.querySelector('#inventory')
-//       inventoryElement.innerHTML = '';
-
-//       latestProducts.forEach((item) => {
-//         // console.log(item)
-//         const prodUrl = item.url;
-//         const prodAlt = item.alt;
-//         const prodTitle = item.title;
-//         const prodPrice = item.price;
-
-//         const prodCard = document.createElement('li');
-//         const prodImage = document.createElement('img');
-//         prodImage.src = prodUrl;
-//         prodImage.alt = prodAlt;
-
-//         const itemTitle = document.createElement('h4');
-//         itemTitle.innerHTML = prodTitle;
-
-//         const itemPrice = document.createElement('p');
-//         itemPrice.innerHTML = prodPrice
-
-//         const likeButton = document.createElement('button');
-//         likeButton.innerText = "♥"
-
-//         const addButton = document.createElement('button');
-//         addButton.innerText = "+"
-
-//         prodCard.append(prodImage, itemTitle, itemPrice, likeButton, addButton);
-
-//         document.querySelector('#inventory').append(prodCard)
-//       });
-//     }
-//     displayLatestItems();
-//   });
-// });
-
-
-
-// // // ALL PRODUCT FILTER BUTTON
-
-// // const allButton = document.getElementById('all-button');
-// // allButton.addEventListener('click', (e) => {
-// //   onValue(dbRef, function (data) {
-// //     const allProducts = data.val();
-// //     const inventory = Object.values(allProducts.inventory)
-// //     const allFilterProducts = inventory.filter((item) => {
-// //       return item.category.all === true;
-// //     });
-// //     // console.log(allFilterProducts); 
-
-
-// //     const displayAllItems = (displayAll) => {
-
-// //       const inventoryElement = document.querySelector('#inventory')
-// //       inventoryElement.innerHTML = '';
-
-// //       allFilterProducts.forEach((item) => {
-// //         console.log(item)
-// //         const newLi = document.createElement('li');
-// //         // const imgElement = document.createElement('img');
-// //         newLi.innerHTML = `
-// //         <img src=${item.url} alt="${item.alt}" />
-// //         <h4>${item.title}</h4>
-// //         <p>${item.price}<p>
-// //         <button>♥</button>
-// //         <button>+</button>
-// //         `
-// //         // newLi.append(imgElement);
-// //         inventoryElement.append(newLi)
-// //       });
-// //     }
-// //     displayAllItems();
-// //   });
-// // });
