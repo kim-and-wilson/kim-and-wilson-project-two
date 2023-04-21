@@ -71,6 +71,7 @@ $faintblue: #88cce2;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+
     }
 }
 
@@ -78,61 +79,50 @@ $faintblue: #88cce2;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+
+    img {
+        margin-bottom: 40px;
+    }
   }
 
-.relative-parent {
-    display: flex;
+
+
+  .likeButton {
+    cursor: pointer;
+    font-size: 35px;
+    background: transparent;
+    border: none;
+    color: lightgrey;
     position: relative;
+    bottom: 350px;
+    right: -250px;
 
-    .absolute-child {
-        display: flex;
-        position: absolute;
-        left: 0;
-        bottom: 0;
+   
+  }
+
+.addButton {
+        background: transparent;
+        position: relative;
+        bottom: 130px;
+        left: -30px;
         box-shadow: 5px 5px 5px lightgrey;
-
-        // had to use light grey above as the "lightgrey" on design sheet shows up light blue and the "faintblue" shows up lightgrey but was way too light and didn't show on website
-
-        img {
-            padding: 8px;
-            width: 25px;
-            height: auto;
+        padding: 8px;
+        width: 40px;
+        height: 40px;
+        margin-bottom: 20px;
         }
-    }
-}
-
-#inventory li button
- {
-  display: inline-block;
-  margin: 10px 5px;
-  top: 0px;
-  right: 0px;
-
-}
-
-#inventory button {
-  text-align: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 30px;
-  background: transparent;
-  border: none;
-  color: black;
-  line-height: 1.6;
 
 
- 
-}
 
-#inventory button:disabled {
+
+.likeButton:disabled {
   color: lightgray;
   cursor: auto;
+ }
 
-}
-
-#inventory button:hover:not([disabled]),
-#inventory button:focus {
+.likeButton:active,
+.likeButton:hover:not([disabled]),
+.likeButton:focus {
   color: palevioletred;
 }
+
