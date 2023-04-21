@@ -25,10 +25,11 @@ onValue(inventoryRef, (data) => {
     const prodAlt = inventoryData[key].alt
     const prodTitle = inventoryData[key].title
     const prodPrice = inventoryData[key].price 
+    const prodCart = inventoryData[key].icon
     //console.log (prodUrl, prodAlt, prodTitle, prodPrice) success
 
-    const prodCard = document.createElement('li');
-    prodCard.id = key
+    const prodContainer = document.createElement('li');
+    prodContainer.id = key
     //console.log(listItem) success
 
     const prodImage = document.createElement('img');
@@ -36,20 +37,28 @@ onValue(inventoryRef, (data) => {
     prodImage.alt = prodAlt
 
     const itemTitle = document.createElement('h4');
-    itemTitle.innerHTML = prodTitle
+    itemTitle.innerText = prodTitle
 
     const itemPrice = document.createElement('p');
-    itemPrice.innerHTML = prodPrice
+    itemPrice.innerText = prodPrice
 
     const likeButton = document.createElement('button');
+    likeButton.classList.add('likeButton');
     likeButton.innerText = "♥"
 
+    // const addButton = document.createElement('img');
+    // addButton.classList.add('addButton');
+    // addButton.src = prodCart
     const addButton = document.createElement('button');
+    addButton.classList.add('addButton');
     addButton.innerText = "+"
+    
 
-    prodCard.append(prodImage, itemTitle, itemPrice, likeButton, addButton);
+    prodContainer.append(prodImage, itemTitle, itemPrice, likeButton, addButton);
 
-    document.querySelector('#inventory').append(prodCard)
+    //console.log(prodContainer) success
+
+    document.querySelector('#inventory').append(prodContainer);
   }
 })
 
