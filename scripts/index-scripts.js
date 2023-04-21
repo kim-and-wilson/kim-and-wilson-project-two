@@ -24,7 +24,7 @@ const dbRef = ref(database)
         const prodPrice = item.price;
         const prodCart = item.icon
 
-        const prodCard = document.createElement('li');
+        const prodContainer = document.createElement('li');
         const prodImage = document.createElement('img');
         prodImage.src = prodUrl;
         prodImage.alt = prodAlt;
@@ -43,20 +43,20 @@ const dbRef = ref(database)
         addButton.classList.add('addButton');
         addButton.innerText = "+"
 
-        prodCard.append(prodImage, itemTitle, itemPrice, likeButton, addButton);
+        prodContainer.append(prodImage, itemTitle, itemPrice, likeButton, addButton);
 
-        document.querySelector('#inventory').append(prodCard);
+        document.querySelector('#inventory').append(prodContainer);
       });      
     };
 
     // ALL PRODUCTS FILTER WITH DISPLAY ON LOAD
+
     const allButton = document.querySelector('#all-button');
     allButton.addEventListener('click', function (e) {
       const allProducts = inventory.filter((item) => {
         return item.category.all === true;
       });
       displayItems(allProducts);
-      // console.log(allProducts)
     });
 
     document.addEventListener('DOMContentLoaded', (e) => {
@@ -65,7 +65,6 @@ const dbRef = ref(database)
           return item.category.all === true;
         });
         displayItems(allProducts);
-        // console.log(allProducts)
       });
     })
     allButton.click();
@@ -79,18 +78,17 @@ const dbRef = ref(database)
         return item.category.featured === true;
       });
       displayItems(featuredProducts);
-      // console.log(featuredProducts)
     });
 
 
     // BESTSELLER PRODUCTS FILTER
+    
     const bestsellerButton = document.querySelector('#bestseller-button');
     bestsellerButton.addEventListener('click', function (e) {
       const bestsellerProducts = inventory.filter((item) => {
         return item.category.bestseller === true;
       });
       displayItems(bestsellerProducts);
-      // console.log(bestsellerProducts)
     });
 
 
@@ -102,6 +100,5 @@ const dbRef = ref(database)
         return item.category.latest === true;
       });
       displayItems(latestProducts);
-      // console.log(latestProducts)
     });
  });
