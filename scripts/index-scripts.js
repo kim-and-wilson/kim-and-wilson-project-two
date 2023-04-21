@@ -6,220 +6,99 @@ import { getDatabase, ref, onValue } from 'https://www.gstatic.com/firebasejs/9.
 
 const database = getDatabase(firebaseInfo);
 
+const dbRef = ref(database)
+  onValue(dbRef, (data) => {
+    const allProducts = data.val();
+    const inventory = Object.values(allProducts.inventory)
+    console.log(inventory)
 
-// ALL DISPLAY ON PAGE LOAD
 
-const inventoryRef = ref(database, '/inventory');
-//console.log(inventoryRef); success
+    const displayItems = (displayCategories) => {
+      const inventoryElement = document.querySelector('#inventory')
+      inventoryElement.innerHTML = '';
 
-onValue(inventoryRef, (data) => {
-//console.log(data.val()); success
+     displayCategories.forEach((item) => {
+        const prodUrl = item.url;
+        const prodAlt = item.alt;
+        const prodTitle = item.title;
+        const prodPrice = item.price;
+        const prodCart = item.icon
 
-  const inventoryData = data.val();
-// console.log(inventoryData);
+        const prodContainer = document.createElement('li');
+        const prodImage = document.createElement('img');
+        prodImage.src = prodUrl;
+        prodImage.alt = prodAlt;
 
-  for (let key in inventoryData) {
-  //  console.log(inventoryData[key]); success
+        const itemTitle = document.createElement('h4');
+        itemTitle.innerHTML = prodTitle;
 
-    const prodUrl = inventoryData[key].url
-    const prodAlt = inventoryData[key].alt
-    const prodTitle = inventoryData[key].title
-    const prodPrice = inventoryData[key].price 
-    const prodCart = inventoryData[key].icon
-    //console.log (prodUrl, prodAlt, prodTitle, prodPrice) success
+        const itemPrice = document.createElement('p');
+        itemPrice.innerHTML = prodPrice
 
-    const prodContainer = document.createElement('li');
-    prodContainer.id = key
-    //console.log(listItem) success
+        const likeButton = document.createElement('button');
+        likeButton.classList.add('likeButton');
+        likeButton.innerText = "♥"
 
-    const prodImage = document.createElement('img');
-    prodImage.src = prodUrl
-    prodImage.alt = prodAlt
+        const addButton = document.createElement('button');
+        addButton.classList.add('addButton');
+        addButton.innerText = "+"
 
-    const itemTitle = document.createElement('h4');
-    itemTitle.innerText = prodTitle
+        prodContainer.append(prodImage, itemTitle, itemPrice, likeButton, addButton);
 
-    const itemPrice = document.createElement('p');
-    itemPrice.innerText = prodPrice
+        document.querySelector('#inventory').append(prodContainer);
+      });      
+    };
 
-    const likeButton = document.createElement('button');
-    likeButton.classList.add('likeButton');
-    likeButton.innerText = "♥"
+    // ALL PRODUCTS FILTER WITH DISPLAY ON LOAD
 
-    // const addButton = document.createElement('img');
-    // addButton.classList.add('addButton');
-    // addButton.src = prodCart
-    const addButton = document.createElement('button');
-    addButton.classList.add('addButton');
-    addButton.innerText = "+"
+    const allButton = document.querySelector('#all-button');
+    allButton.addEventListener('click', function (e) {
+      const allProducts = inventory.filter((item) => {
+        return item.category.all === true;
+      });
+      displayItems(allProducts);
+    });
+
+    document.addEventListener('DOMContentLoaded', (e) => {
+      allButton.addEventListener('click', function (e) {
+        const allProducts = inventory.filter((item) => {
+          return item.category.all === true;
+        });
+        displayItems(allProducts);
+      });
+    })
+    allButton.click();
     
 
-    prodContainer.append(prodImage, itemTitle, itemPrice, likeButton, addButton);
+    // FEATURED PRODUCTS FILTER
 
-    //console.log(prodContainer) success
-
-    document.querySelector('#inventory').append(prodContainer);
-  }
-})
-
-
-// BUTTON FILTER SECTION
-
-const dbRef = ref(database);
-
-const addToDatabase = (key, value) => {
-  // Create a function that we pass  the info we want to store and the property name under which we want to store it
-  const customRef = ref(database, key);
-  // Set our info as the value of our ref
-    onValue (customRef, value);
-};
-
-// ALL PRODUCT FILTER BUTTON
-
-const allButton = document.getElementById('all-button');
-allButton.addEventListener('click', (e) => {
-  onValue(dbRef, function (data) {
-    const allProducts = data.val();
-    const inventory = Object.values(allProducts.inventory)
-    const allFilterProducts = inventory.filter((item) => {
-      return item.category.all === true;
-    });
-    // console.log(allFilterProducts); 
-
-
-    const displayAllItems = (displayAll) => {
-
-      const inventoryElement = document.querySelector('#inventory')
-      inventoryElement.innerHTML = '';
-
-      allFilterProducts.forEach((item) => {
-        console.log(item)
-        const newLi = document.createElement('li');
-        // const imgElement = document.createElement('img');
-        newLi.innerHTML = `
-        <img src=${item.url} alt="${item.alt}" />
-        <h4>${item.title}</h4>
-        <p>${item.price}<p>
-        <button>♥</button>
-        <button>+</button>
-        `
-        // newLi.append(imgElement);
-        inventoryElement.append(newLi)
+    const featuredButton = document.querySelector('#featured-button');
+    featuredButton.addEventListener('click', function (e) {
+      const featuredProducts = inventory.filter((item) => {
+        return item.category.featured === true;
       });
-    }
-    displayAllItems();
-  });
-});
-
-// FEATURED PRODUCT FILTER BUTTON
-
-const featuredButton = document.getElementById('featured-button');
-featuredButton.addEventListener('click', (e) => {
-  onValue(dbRef, function (data) {
-    const allProducts = data.val();
-    const inventory = Object.values(allProducts.inventory)
-    const featuredProducts = inventory.filter((item) => {
-      return item.category.featured === true;
+      displayItems(featuredProducts);
     });
-    // console.log(featuredProducts); 
-  
-    const displayFeaturedItems = (displayFeatured) => {
 
-      const inventoryElement = document.querySelector('#inventory')
-      inventoryElement.innerHTML = '';
 
-      featuredProducts.forEach((item) => {
-        console.log(item)
-        const newLi = document.createElement('li');
-        // const imgElement = document.createElement('img');
-        newLi.innerHTML = `
-        <img src=${item.url} alt="${item.alt}" />
-        <h4>${item.title}</h4>
-        <p>${item.price}<p>
-        <button>♥</button>
-        <button>+</button>
-        `
-        // newLi.append(imgElement);
-        inventoryElement.append(newLi)
+    // BESTSELLER PRODUCTS FILTER
+    
+    const bestsellerButton = document.querySelector('#bestseller-button');
+    bestsellerButton.addEventListener('click', function (e) {
+      const bestsellerProducts = inventory.filter((item) => {
+        return item.category.bestseller === true;
       });
-    }
-    displayFeaturedItems();
-  });
-});
-
-
-// BESTSELLER PRODUCT FILTER BUTTON
-
-const bestsellerButton = document.getElementById('bestseller-button');
-bestsellerButton.addEventListener('click', (e) => {
-  onValue(dbRef, function (data) {
-    const allProducts = data.val();
-    const inventory = Object.values(allProducts.inventory)
-    const bestsellerProducts = inventory.filter((item) => {
-      return item.category.bestseller === true;
+      displayItems(bestsellerProducts);
     });
-    // console.log(bestsellerProducts); filter completed
 
-    const displayBestsellerItems = (displayFeatured) => {
 
-      const inventoryElement = document.querySelector('#inventory')
-      inventoryElement.innerHTML = '';
+    // LATEST PRODUCTS FILTER
 
-      bestsellerProducts.forEach((item) => {
-        console.log(item)
-        const newLi = document.createElement('li');
-        // const imgElement = document.createElement('img');
-        newLi.innerHTML = `
-        <img src=${item.url} alt="${item.alt}" />
-        <h4>${item.title}</h4>
-        <p>${item.price}<p>
-        <button>♥</button>
-        <button>+</button>
-        `
-        // newLi.append(imgElement);
-        inventoryElement.append(newLi)
+    const latestButton = document.querySelector('#latest-button');
+    latestButton.addEventListener('click', function (e) {
+      const latestProducts = inventory.filter((item) => {
+        return item.category.latest === true;
       });
-    }
-    displayBestsellerItems();
-  });
-});
-
-
-// LATEST PRODUCT FILTER BUTTON
-      
-const latestButton = document.getElementById('latest-button');
-latestButton.addEventListener('click', (e) => {
-  onValue(dbRef, function (data) {
-    const allProducts = data.val();
-    const inventory = Object.values(allProducts.inventory)
-    const latestProducts = inventory.filter((item) => {
-      return item.category.latest === true;
+      displayItems(latestProducts);
     });
-    console.log(latestProducts);
-
-    const displayLatestItems = (displayLatest) => {
-
-      const inventoryElement = document.querySelector('#inventory')
-      inventoryElement.innerHTML = '';
-
-      latestProducts.forEach((item) => {
-        console.log(item)
-        const newLi = document.createElement('li');
-        // const imgElement = document.createElement('img');
-        newLi.innerHTML = `
-        <img src=${item.url} alt="${item.alt}" />
-        <h4>${item.title}</h4>
-        <p>${item.price}<p>
-        <button>♥</button>
-        <button>+</button>
-        `
-        // newLi.append(imgElement);
-        inventoryElement.append(newLi)
-      });
-    }
-    displayLatestItems();
-  });
-});
-
-
-
+ });
