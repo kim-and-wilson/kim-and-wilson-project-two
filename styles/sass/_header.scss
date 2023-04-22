@@ -49,10 +49,28 @@ $faintblue: #88cce2;
     }
 }
 
-.shopping-bag-container img {
+.shopping-bag-container {
+
+    display: flex;
+
+img {
     width: 20px;
     height: auto;
 }
+}
+
+button {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+  
+  }
+
+.sup {
+    position: relative;
+    bottom: 1ex; 
+    font-size: 80%;
+  }
 
 .header-nav-container li {
     display: inline-block;

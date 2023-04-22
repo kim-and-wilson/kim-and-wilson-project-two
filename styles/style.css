@@ -302,9 +302,26 @@ img {
           align-items: center;
 }
 
+.shopping-bag-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
 .shopping-bag-container img {
   width: 20px;
   height: auto;
+}
+
+button {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+.sup {
+  position: relative;
+  bottom: 1ex;
+  font-size: 80%;
 }
 
 .header-nav-container li {

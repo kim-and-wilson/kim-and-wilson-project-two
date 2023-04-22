@@ -10,7 +10,7 @@ const dbRef = ref(database)
   onValue(dbRef, (data) => {
     const allProducts = data.val();
     const inventory = Object.values(allProducts.inventory)
-    console.log(inventory)
+    //console.log(inventory)
 
 
     const displayItems = (displayCategories) => {
@@ -22,7 +22,7 @@ const dbRef = ref(database)
         const prodAlt = item.alt;
         const prodTitle = item.title;
         const prodPrice = item.price;
-        const prodCart = item.icon
+  
 
         const prodContainer = document.createElement('li');
         const prodImage = document.createElement('img');
@@ -41,6 +41,8 @@ const dbRef = ref(database)
 
         const addButton = document.createElement('button');
         addButton.classList.add('addButton');
+        addButton.setAttribute('id', 'addButton');
+        //addButton.setAttribute('type', 'submit');
         addButton.innerText = "+"
 
         prodContainer.append(prodImage, itemTitle, itemPrice, likeButton, addButton);
@@ -101,4 +103,33 @@ const dbRef = ref(database)
       });
       displayItems(latestProducts);
     });
+
+
+   // ADD TO CARY - display/increase the number of items in the cart as they are added (+ button is clicked)
+    
+
+    const cart = document.getElementById("cart");
+    document.getElementById("addButton").onclick = function add_items(){const item =cart.innerText;cart.innerText=parseInt(item, 10)+1}
+
+
  });
+
+
+  // create span to run total cart tally - done
+  // click event on addButton - only working on product 1 - loop
+ 
+ // when product is added, alert 'added' somehow
+
+// document.getElementById("addButton").addEventListener("click", myFunction);
+
+    // function myFunction() {
+    //   document.getElementById("addButton").innerHTML = "Added";
+    // }
+
+
+
+
+  //“Add to cart” action to move a product into the cart table.
+  //Load and change the shopping cart status on each cart action.
+  //Update total cart items and total price on each change.
+  //Empty the cart by clearing the session.
