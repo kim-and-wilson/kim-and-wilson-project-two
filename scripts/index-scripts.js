@@ -7,11 +7,10 @@ import { getDatabase, ref, onValue } from 'https://www.gstatic.com/firebasejs/9.
 const database = getDatabase(firebaseInfo);
 
 const dbRef = ref(database)
+
   onValue(dbRef, (data) => {
     const allProducts = data.val();
     const inventory = Object.values(allProducts.inventory)
-    console.log(inventory)
-
 
     const displayItems = (displayCategories) => {
       const inventoryElement = document.querySelector('#inventory')
