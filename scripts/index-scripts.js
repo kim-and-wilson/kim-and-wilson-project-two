@@ -2,16 +2,27 @@
 
 // ALSO don't forget, we're using modules, which means we'll need to turn on our Live Server!
 import firebaseInfo from './firebaseConfig.js';
-import { getDatabase, ref, onValue } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js';
+import { getDatabase, ref, onValue, push } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js';
 
 const database = getDatabase(firebaseInfo);
+const dbRef = ref(database);
 
-const dbRef = ref(database)
+// global variables
+
+// reference to the inventory in our database
+const inventoryRef = ref(database, '/inventory');
+
+// reference to our cart in firebase
+const cartRef = ref(database, '/cart')
+// use if we display the items in the cart (stretch)
+const ulElement = document.querySelector("#inventory");
+
+
+
   onValue(dbRef, (data) => {
     const allProducts = data.val();
     const inventory = Object.values(allProducts.inventory)
     //console.log(inventory)
-
 
     const displayItems = (displayCategories) => {
       const inventoryElement = document.querySelector('#inventory')
@@ -22,6 +33,7 @@ const dbRef = ref(database)
         const prodAlt = item.alt;
         const prodTitle = item.title;
         const prodPrice = item.price;
+        const prodId = item.id;
   
 
         const prodContainer = document.createElement('li');
@@ -40,6 +52,7 @@ const dbRef = ref(database)
         likeButton.innerText = "♥"
 
         const addButton = document.createElement('button');
+        addButton.innerHTML = prodId;
         addButton.classList.add('addButton');
         addButton.setAttribute('id', 'addButton');
         //addButton.setAttribute('type', 'submit');
@@ -102,34 +115,152 @@ const dbRef = ref(database)
         return item.category.latest === true;
       });
       displayItems(latestProducts);
+    
     });
 
 
    // ADD TO CARY - display/increase the number of items in the cart as they are added (+ button is clicked)
     
 
-    const cart = document.getElementById("cart");
-    document.getElementById("addButton").onclick = function add_items(){const item =cart.innerText;cart.innerText=parseInt(item, 10)+1}
+    // const cart = document.getElementById("cart");
+    // document.getElementById("addButton").onclick = function add_items(){const item =cart.innerText;cart.innerText=parseInt(item, 10)+1}
+
+    ulElement.addEventListener('click', (event) => {
+
+      // only run code if the user clicks on the BUTTON element
+      if (event.target.tagName === "BUTTON") {
+         // get the id attribute value from the list item
+        //  pass the id attribute value as an argument to our addToFavs function
+      addToCart(event.target.parentElement.id)
+    
+    }
+    })
+    
+    // create a new object that represents a new cart
+    // this new object will have some of the properties of the original inventory object
+    // push this new object to a new location in firebase (/addToCart section)
+    
+    const addToCart = (selectedProduct) => {
+    
+      // create a reference to the specific product added to cart in firebase
+      const chosenRef = ref(database, `/inventory/${selectedProduct}`);
+    
+    
+    get(chosenRef)
+      .then((snapshot) => {
+    const allProducts = snapshot.val()
+    console.log(allProducts)
+    
+    // our new product added to cart object
+    const showCart = {
+      title: allProducts.title,
+      price: allProducts.price,
+      id: allProducts.id
+    }
+    console.log(showCart)
+    push(cartRef, showCart)
+      })
+    
+    }
+
 
 
  });
 
 
-  // create span to run total cart tally - done
-  // click event on addButton - only working on product 1 - loop
- 
- // when product is added, alert 'added' somehow
-
-// document.getElementById("addButton").addEventListener("click", myFunction);
-
-    // function myFunction() {
-    //   document.getElementById("addButton").innerHTML = "Added";
-    // }
 
 
 
 
-  //“Add to cart” action to move a product into the cart table.
-  //Load and change the shopping cart status on each cart action.
-  //Update total cart items and total price on each change.
-  //Empty the cart by clearing the session.
+// // display our data onto the page
+// //onValue(animalRef = the location aka the node, (data))
+// onValue(inventoryRef, (data) => {
+
+//   ulElement.innerHTML= "";
+
+//   const productData = data.val();
+
+//   //using FOR IN, loop over each item in our data object
+//   // create some html and append it to the page
+//   for (let key in productData) {
+//     //console.log(productData[key])
+
+//   // start creating our html
+//   const  listItem = document.createElement('li');
+//   listItem.id = key;
+
+//     // storing the img url and alt text in variable
+//     const prodTitle = productData[key].title;
+//     const prodPrice = productData[key].price;
+//     // const imgUrl = productData[key].url;
+//     // const imgAlt = productData[key].alt;
+
+
+//     const itemTitle = document.createElement('h4');
+//     itemTitle.innerHTML = prodTitle;
+
+//     const itemPrice = document.createElement('p');
+//     itemPrice.innerHTML = prodPrice
+
+//     // creating the image element and adding the attributes like this instead of using listItem.innerHTML = `` like in Owen's codealong
+//     // const prodImage = document.createElement('img');
+//     // prodImage.src = imgUrl;
+//     // prodImage.alt = imgAlt;
+
+//     const addButton = document.createElement('button');
+//     addButton.id = "button";
+   
+        
+//     // appending the image, title and price to our list item
+//     listItem.append(itemTitle, itemPrice, addButton);
+//     console.log(listItem);
+
+//     // append the list item to the ul that exisits on the page
+//     ulElement.append(listItem);
+
+    
+// //     if (animalData[key].isFavourited === true) {
+// // likeButton.setAttribute('disabled', "");
+
+// //     }
+//   }
+// });
+  
+  // add event listener to <ul> and take advantage of bubbling to monitor for clicks on the <li>
+ulElement.addEventListener('click', (event) => {
+
+  // only run code if the user clicks on the BUTTON element
+  if (event.target.tagName === "BUTTON") {
+     // get the id attribute value from the list item
+    //  pass the id attribute value as an argument to our addToFavs function
+  addToCart(event.target.parentElement.id)
+
+}
+})
+
+// create a new object that represents a new cart
+// this new object will have some of the properties of the original inventory object
+// push this new object to a new location in firebase (/addToCart section)
+
+const addToCart = (selectedProduct) => {
+
+  // create a reference to the specific product added to cart in firebase
+  const chosenRef = ref(database, `${selectedProduct}`);
+
+
+get(chosenRef)
+  .then((snapshot) => {
+const productData = snapshot.val()
+console.log(productData)
+
+// our new product added to cart object
+const showCart = {
+  title: productData.title,
+  price: productData.price,
+  id: productData.id
+}
+console.log(showCart)
+push(cartRef, showCart)
+  })
+
+}
