@@ -99,6 +99,9 @@ h2:after {
     padding-top: 30px;
 }
 
+
+// responsiveness media queries
+
 @media (max-width: 1000px) {
     .blog-post-parent {
         flex-direction: column;
