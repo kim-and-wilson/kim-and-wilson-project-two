@@ -5,27 +5,30 @@ $lightgrey: #f6f7fb;
 $white: #fff;
 $faintblue: #88cce2;
 
-
 .collection {
     background: $white;
     padding: 50px 0px;
 
     .collection-parent {
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
         padding: 10px 0px;
+
     }
 }
 
 .collection-child {
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     display: flex;
     flex-direction: column;
     height: 300px;
     line-height: 1.5;
     justify-content: center;
-    padding: 30px 20px;
+    padding: 0px 20px;
+    margin: 10px 0px;
    
     
     p {
@@ -93,10 +96,27 @@ $faintblue: #88cce2;
     }
 }    
 
-@media (max-width: 800px) {
+// responsiveness media queries
 
-    .collection-parent {
+@media (max-width: 950px) {
+    .wrapper {
+
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        }
+ 
+        .collection-parent {
+        display: flex;
         flex-direction: column;
-        width: 100%;
-    }
+        align-content: center;
+        justify-content: center;
+        }
+
+        .collection-child {
+            background-size: stretch;
+            justify-content: center;
+            height: 350px;
+            width: 350px;
+        }
 }

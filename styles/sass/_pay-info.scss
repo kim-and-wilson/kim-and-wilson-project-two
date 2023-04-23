@@ -11,6 +11,11 @@ $faintblue: #88cce2;
 
     .wrapper {
         display: flex;
+        background: url(../assets/header.png);
+        background-repeat: no-repeat;
+        background-position: right;
+        padding: 144px 0px;
+
     }
 }
 
@@ -112,12 +117,20 @@ $faintblue: #88cce2;
 }
 
 
+// responsiveness media queries
 
-
-@media (max-width: 800px) {
+@media (max-width: 768px) {
 
     .hero-image .wrapper,
     .pay-info .wrapper {
         flex-direction: column;
+        align-content: center;
     }
+
+    .pay-info-container-1,
+    .pay-info-container-2,
+    .pay-info-container-3 {
+         width: 80%;
+
+    }    
 }

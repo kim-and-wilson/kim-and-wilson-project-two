@@ -9,9 +9,6 @@ const dbRef = ref(database);
 const inventoryRef = ref(database, '/inventory');
 const cartRef = ref(database, '/cart');
 
-// global variables
-const ulElement = document.querySelector("#inventory");
-
 
 onValue(dbRef, (data) => {
   const allProducts = data.val();

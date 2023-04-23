@@ -126,3 +126,10 @@ $faintblue: #88cce2;
   color: palevioletred;
 }
 
+@media (max-width: 614px) {
+    .inventory {
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+    }
+}
