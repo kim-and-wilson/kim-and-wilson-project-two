@@ -4,12 +4,12 @@
 import firebaseInfo from './firebaseConfig.js';
 import { getDatabase, ref, onValue, push, get } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js';
 
+// global variables
 const database = getDatabase(firebaseInfo);
 const dbRef = ref(database);
 const inventoryRef = ref(database, '/inventory');
 const cartRef = ref(database, '/cart');
 
-// global variables
 const ulElement = document.querySelector("#inventory");
 
 
@@ -26,11 +26,12 @@ onValue(dbRef, (data) => {
       const prodAlt = item.alt;
       const prodTitle = item.title;
       const prodPrice = item.price;
-      const prodCart = item.icon
+      //const prodCart = item.icon
   
 
       const prodContainer = document.createElement('li');
       prodContainer.setAttribute('id', `product${index+1}`)
+
       const prodImage = document.createElement('img');
       prodImage.src = prodUrl;
       prodImage.alt = prodAlt;
@@ -87,7 +88,7 @@ onValue(dbRef, (data) => {
       const featuredProducts = inventory.filter((item) => {
         return item.category.featured === true;
       });
-      console.log(featuredProducts);
+      //console.log(featuredProducts);
       displayItems(featuredProducts);
     });
 
@@ -148,3 +149,15 @@ onValue(dbRef, (data) => {
           push(cartRef, showCart)
         });
     };
+
+    
+
+    
+    onValue(cartRef, (snapshot) => {
+      const cartRefData = snapshot.val();
+      const openCart = Object.keys(cartRefData || {}).length;
+      
+     
+      const cart = document.getElementById("cart").innerHTML = openCart;
+      
+  });
