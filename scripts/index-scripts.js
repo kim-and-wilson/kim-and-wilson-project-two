@@ -2,7 +2,7 @@
 
 // ALSO don't forget, we're using modules, which means we'll need to turn on our Live Server!
 import firebaseInfo from './firebaseConfig.js';
-import { getDatabase, ref, onValue, push, get } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js';
+import { getDatabase, ref, onValue, push, get, update } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js';
 
 // global variables
 const database = getDatabase(firebaseInfo);
@@ -13,10 +13,11 @@ const cartRef = ref(database, '/cart');
 const ulElement = document.querySelector("#inventory");
 
 
-onValue(dbRef, (data) => {
+onValue(inventoryRef, (data) => {
   const allProducts = data.val();
-  const inventory = Object.values(allProducts.inventory)
-  console.log(allProducts)
+  const inventory = Object.keys(allProducts).map(function (key){
+    return allProducts[key];
+  })
 
   const displayItems = (displayCategories) => {
     const inventoryElement = document.querySelector('#inventory')
@@ -75,17 +76,6 @@ onValue(dbRef, (data) => {
     displayItems(allProducts);
     });
 
-    // ALL PRODUCTS FILTER WITH DISPLAY ON LOAD
-
-    // document.addEventListener('DOMContentLoaded', (e) => {
-    //   allButton.addEventListener('click', function (e) {
-    //     const allProducts = inventory.filter((item) => {
-    //       return item.category.all === true;
-    //     });
-    //     displayItems(allProducts);
-    //   });
-    // })
-    // allButton.click();
 
 
     // FEATURED BUTTON PRODUCTS FILTER
@@ -133,11 +123,6 @@ onValue(dbRef, (data) => {
       };
     });
 
-    ulElement.addEventListener('click', (e) => {
-      if (e.target.nodeName === "BUTTON") {
-        e.preventDefault()
-      };
-    });
 
     // ADD TO CART FUNCTION
 
@@ -147,8 +132,8 @@ onValue(dbRef, (data) => {
 
       get(selectedRef)
         .then((snapshot) => {
+          console.log(snapshot.val())
           const addedProduct = snapshot.val()
-          const stock = addedProduct.stock
         
 
           // our new product added to cart object
@@ -158,25 +143,22 @@ onValue(dbRef, (data) => {
             id: addedProduct.id,
             stock: addedProduct.stock
           }
+          console.log(showCart)
 
 
 
-          if (addedProduct.stock < "0") {
+          if (addedProduct.stock < 1) {
             alert('Item not available!')
           } else {
             push(cartRef, showCart);
         }
         });
     };
-
-    
-
     
     onValue(cartRef, (snapshot) => {
       const cartRefData = snapshot.val();
       const openCart = Object.keys(cartRefData || {}).length;
       
-     
       const cart = document.getElementById("cart").innerHTML = openCart;
       
   });
