@@ -1,9 +1,4 @@
-$green: #abd373;
-$darkeygrey: #4c4c4c;
-$black: #000;
-$lightgrey: #f6f7fb;
-$white: #fff;
-$faintblue: #88cce2;
+@import 'color-scheme';
 
 .wrapper {
     width: 60%;
@@ -70,10 +65,18 @@ fieldset {
     display: flex;
     justify-content: space-between;
     line-height: 2;
+    width: calc(47%);
 
     input {
         border: 0;
+        width: 150px;
     }
+}
+
+.first-row,
+.second-row {
+    width: 80%;
+    justify-content: space-between;
 }
 
 .first-name,
@@ -81,7 +84,7 @@ fieldset {
 .phone,
 .email {
     border-bottom: 1px solid $darkeygrey;
-    width: calc(47%);
+    width: 150px;
 }
 
 input::placeholder {
@@ -108,4 +111,23 @@ button {
 .button {
     display: flex;
     justify-content: flex-end;
+}
+
+@media (max-width: 800px) {
+    .contact-parent {
+        flex-direction: column;
+
+    .contact-info {
+        width: auto;
+        height: 200px;
+    }
+    }
+}
+
+@media (max-width: 660px) {
+    .first-row,
+    .second-row {
+        flex-direction: column;
+        align-content: center;
+    }    
 }

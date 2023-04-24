@@ -1,9 +1,4 @@
-$green: #abd373;
-$darkeygrey: #4c4c4c;
-$black: #000;
-$lightgrey: #f6f7fb;
-$white: #fff;
-$faintblue: #88cce2;
+@import 'color-scheme';
 
 .gallery{
     background: $white;
@@ -79,13 +74,9 @@ $faintblue: #88cce2;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    align-content: center;
 
-    img {
-        margin-bottom: 40px;
-    }
-  }
-
-
+}
 
   .likeButton {
     cursor: pointer;
@@ -113,8 +104,6 @@ $faintblue: #88cce2;
         }
 
 
-
-
 .likeButton:disabled {
   color: lightgray;
   cursor: auto;
@@ -127,9 +116,18 @@ $faintblue: #88cce2;
 }
 
 @media (max-width: 614px) {
-    .inventory {
+    .inventory ul {
+        flex-direction: column;
         align-content: center;
-        justify-content: center;
-        align-items: center;
+    }
+}
+
+@media (max-width:600px) {
+    .product-buttons-section {
+        flex-direction: column;
+
+        button {
+            width: 150px;
+        }
     }
 }
