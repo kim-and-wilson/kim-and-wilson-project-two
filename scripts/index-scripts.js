@@ -2,7 +2,7 @@
 
 // ALSO don't forget, we're using modules, which means we'll need to turn on our Live Server!
 import firebaseInfo from './firebaseConfig.js';
-import { getDatabase, ref, onValue, push, get } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js';
+import { getDatabase, ref, onValue, push, get, update } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js';
 
 // global variables
 const database = getDatabase(firebaseInfo);
@@ -13,9 +13,11 @@ const cartRef = ref(database, '/cart');
 const ulElement = document.querySelector("#inventory");
 
 
+
 onValue(dbRef, (data) => {
   const allProducts = data.val();
   const inventory = Object.values(allProducts.inventory)
+  console.log(inventory)
 
   const displayItems = (displayCategories) => {
     const inventoryElement = document.querySelector('#inventory')
@@ -156,8 +158,21 @@ onValue(dbRef, (data) => {
     onValue(cartRef, (snapshot) => {
       const cartRefData = snapshot.val();
       const openCart = Object.keys(cartRefData || {}).length;
+    
       
      
       const cart = document.getElementById("cart").innerHTML = openCart;
       
   });
+
+
+  //Hamburger Dropdown Menu
+
+const button = document.getElementById("ham-button");
+const nav = document.getElementById("main-menu");
+
+button.addEventListener('click', () => {
+  nav.classList.toggle('show');
+
+
+});
