@@ -29,23 +29,27 @@
 .contact-form {
     padding: 50px 0px;
     
-
     .contact-parent {
         display: flex;
+        height: 450px;
         box-shadow: 0 0 10px $darkeygrey;
 
+        .form-area {
+            display: flex;
+        }
         .contact-info {
+            display: flex;
+            flex-direction: column;
             background: url(./../assets/contact.jpg);
             background-repeat: no-repeat;
             background-size: center;
             width: 260px;
-            height: 450px;
+            height: auto;
             padding: 20px 20px;
 
             h2 {
                 color: $white;
                 font-size: 1.2rem;
-                
             }
 
             p {
@@ -58,6 +62,8 @@
 
 // Form styling
 form {
+    display: flex;
+    flex-direction: column;
     padding: 40px 0;
 }
 fieldset {
@@ -65,18 +71,17 @@ fieldset {
     display: flex;
     justify-content: space-between;
     line-height: 2;
-    width: calc(40%);
 
     input {
         border: 0;
-        width: 150px;
+        width: 100px;
     }
 }
 
 .first-row,
 .second-row {
-    width: 90%;
-    // justify-content: space-between;
+    display: flex;
+    // width: 80%;
 }
 
 .first-name,
@@ -85,7 +90,6 @@ fieldset {
 .email,
 input {
     border-bottom: 1px solid $darkeygrey;
-    width: 150px;
 }
 
 input::placeholder {
@@ -114,17 +118,17 @@ button {
     justify-content: flex-end;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 965px) {
     .contact-parent {
         flex-direction: column;
-
-    .contact-info {
-        background-position: center;
-        width: auto;
         height: auto;
     }
+
+    .contact-info {
+        background-size: default;
+
+        }
     }
-}
 
 @media (max-width: 660px) {
     .first-row,
