@@ -1,4 +1,4 @@
-@import 'color-scheme';
+@import './variables';
 
 .gallery{
     background: $white;
@@ -62,22 +62,21 @@
 .plant-list {
     background-color: $white;
 
-    .wrapper {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
+    // .wrapper {
+    //     display: flex;
+    //     flex-wrap: wrap;
+    //     justify-content: space-between;
 
-    }
+    // }
 }
 
-.plant-list ul {
+.inventory {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     align-content: center;
-
-
 }
+
 
 
 .likeButton {
@@ -117,19 +116,10 @@
 }
 
 
-@media (max-width: 820px) {
-    .inventory {
-        display: block;
-        flex-direction: wrap;
-        align-content: center;
-        width: 80%;
-        margin-left: 60px;
-    }
-}
 
 @media (max-width: 614px) {
     .wrapper .inventory {
-        width: 80%;
+        width: 100%;
         flex-direction: column;
         align-content: center;
     }
