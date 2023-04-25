@@ -13,11 +13,12 @@ const cartRef = ref(database, '/cart');
 const ulElement = document.querySelector("#inventory");
 
 
-
-onValue(dbRef, (data) => {
+onValue(inventoryRef, (data) => {
   const allProducts = data.val();
-  const inventory = Object.values(allProducts.inventory)
-  console.log(inventory)
+  const inventory = Object.keys(allProducts).map(function (key){
+    return allProducts[key];
+  })
+
 
   const displayItems = (displayCategories) => {
     const inventoryElement = document.querySelector('#inventory')
@@ -59,7 +60,13 @@ onValue(dbRef, (data) => {
       document.querySelector('#inventory').append(prodContainer);
     });  
   }
-    
+
+      // ALL PRODUCTS DISPLAY ON LOAD
+
+    const displayAll = inventory.filter((item) => {
+      return item.category.all === true;
+    });
+    displayItems(displayAll);
 
     // ALL PRODUCTS BUTTON FILTER
     const allButton = document.querySelector('#all-button');
@@ -67,20 +74,9 @@ onValue(dbRef, (data) => {
       const allProducts = inventory.filter((item) => {
         return item.category.all === true;
       });
-      displayItems(allProducts);
+    displayItems(allProducts);
     });
 
-    // ALL PRODUCTS FILTER WITH DISPLAY ON LOAD
-
-    document.addEventListener('DOMContentLoaded', (e) => {
-      allButton.addEventListener('click', function (e) {
-        const allProducts = inventory.filter((item) => {
-          return item.category.all === true;
-        });
-        displayItems(allProducts);
-      });
-    })
-    allButton.click();
 
 
     // FEATURED BUTTON PRODUCTS FILTER
@@ -90,8 +86,7 @@ onValue(dbRef, (data) => {
       const featuredProducts = inventory.filter((item) => {
         return item.category.featured === true;
       });
-      //console.log(featuredProducts);
-      displayItems(featuredProducts);
+    displayItems(featuredProducts);
     });
 
 
@@ -102,7 +97,7 @@ onValue(dbRef, (data) => {
       const bestsellerProducts = inventory.filter((item) => {
         return item.category.bestseller === true;
       });
-      displayItems(bestsellerProducts);
+    displayItems(bestsellerProducts);
     });
 
 
@@ -113,21 +108,20 @@ onValue(dbRef, (data) => {
       const latestProducts = inventory.filter((item) => {
         return item.category.latest === true;
       });
-      displayItems(latestProducts);
+    displayItems(latestProducts);
     });
   });
 
 
     // EVENT LISTENER FOR ADD TO CART
 
-    ulElement.addEventListener('click', (event) => {
-      console.log(event.target)
+    ulElement.addEventListener('click', (e) => {
       // only run code if the user clicks on the BUTTON element
-      if (event.target.nodeName === "BUTTON") {
+      if (e.target.nodeName === "BUTTON") {
         // get the id attribute value from the list item
         //  pass the id attribute value as an argument to our addToFavs function
-        addToCart(event.target.parentElement.id)
-      }
+        addToCart(e.target.parentElement.id)
+      };
     });
 
 
@@ -139,28 +133,34 @@ onValue(dbRef, (data) => {
 
       get(selectedRef)
         .then((snapshot) => {
+          console.log(snapshot.val())
           const addedProduct = snapshot.val()
-          console.log(addedProduct)
-  
+        
+
           // our new product added to cart object
           const showCart = {
             title: addedProduct.title,
             price: addedProduct.price,
-            id: addedProduct.id
+            id: addedProduct.id,
+            stock: addedProduct.stock
           }
-          push(cartRef, showCart)
+          console.log(showCart)
+
+
+
+          if (addedProduct.stock < 1) {
+            alert('Item not available!')
+          } else {
+            push(cartRef, showCart);
+        }
         });
     };
-
-    
-
     
     onValue(cartRef, (snapshot) => {
       const cartRefData = snapshot.val();
       const openCart = Object.keys(cartRefData || {}).length;
     
       
-     
       const cart = document.getElementById("cart").innerHTML = openCart;
       
   });

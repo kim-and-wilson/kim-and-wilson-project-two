@@ -477,9 +477,19 @@ fieldset {
       -ms-flex-pack: justify;
           justify-content: space-between;
   line-height: 2;
+  width: 47%;
 }
 fieldset input {
   border: 0;
+  width: 150px;
+}
+
+.first-row,
+.second-row {
+  width: 80%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .first-name,
@@ -487,7 +497,7 @@ fieldset input {
 .phone,
 .email {
   border-bottom: 1px solid #4c4c4c;
-  width: 47%;
+  width: 150px;
 }
 
 input::-webkit-input-placeholder {
@@ -540,6 +550,29 @@ button:hover {
           justify-content: flex-end;
 }
 
+@media (max-width: 800px) {
+  .contact-parent {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .contact-parent .contact-info {
+    width: auto;
+    height: 200px;
+  }
+}
+@media (max-width: 660px) {
+  .first-row,
+  .second-row {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-line-pack: center;
+        align-content: center;
+  }
+}
 footer {
   background-image: url(../assets/footer.jpg);
   background-repeat: no-repeat;
