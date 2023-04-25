@@ -68,15 +68,33 @@ footer a {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
 
-    .main-menu {
+    .footer-parent {
+        display: block;
+        flex-direction: wrap;
+        justify-content: space-evenly;
+       }  
+    }
+
+
+
+@media (max-width: 720px) {
+
+
+    .footer-parent {
+        display: block;
+        flex-direction: wrap;
+        justify-content: space-evenly;
+       }   
+
+    .footer-menu {
         display: none;
         flex-direction: column;
         width: 100%;
     }
         
-    .main-menu.show {
+    .footer-menu.show {
         position:relative;
         display: block;
         justify-content: center;
@@ -90,26 +108,25 @@ footer a {
         }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 660px) {
 
     footer {
         position: relative;
     }
 
-.main-menu {
+.footer-menu {
         display: none;
         flex-direction: column;
         width: 100%;
     }
 
-.main-menu.show {
-        display: flex;
+.footer-menu.show {
+    display: flex;
     }
 
 .footer-parent {
-        display: block;
-                
-    }   
+    display: block;
+   }   
 
 .links .account .services {
         display: none;
