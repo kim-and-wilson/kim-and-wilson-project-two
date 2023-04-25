@@ -1,9 +1,6 @@
-// Step 1: Set up our FIREBASE database. This includes initializing our database and our dbRef.
-
-// ALSO don't forget, we're using modules, which means we'll need to turn on our Live Server!
 import firebaseInfo from './firebaseConfig.js';
 import { getDatabase, ref, onValue, push, get } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js';
-console.log("hello world!")
+
 // global variables
 const database = getDatabase(firebaseInfo);
 const inventoryRef = ref(database, '/inventory');
@@ -11,8 +8,8 @@ const cartRef = ref(database, '/cart');
 
 const ulElement = document.querySelector("#inventory");
 
-const mapToArray = function (obj) {
-  return Object.keys(obj).map(function (key) {
+const mapToArray = (obj) => {
+  return Object.keys(obj).map((key) => {
     return obj[key];
   });
 }
@@ -20,8 +17,6 @@ const mapToArray = function (obj) {
 onValue(inventoryRef, (data) => {
   const allProducts = data.val();
   const inventory = mapToArray(allProducts);
-
-  console.log(inventory)
 
   const displayItems = (displayCategories) => {
     const inventoryElement = document.querySelector('#inventory')
@@ -32,13 +27,8 @@ onValue(inventoryRef, (data) => {
       const prodAlt = item.alt;
       const prodTitle = item.title;
       const prodPrice = item.price;
-
       const id = item.id.split('')[1]
       const prodID = `product${id}`
-
-
-      //const prodCart = item.icon
-      console.log(prodID)
 
       const prodContainer = document.createElement('li');
       prodContainer.setAttribute('id', prodID)
@@ -60,31 +50,27 @@ onValue(inventoryRef, (data) => {
       const addButton = document.createElement('button');
       addButton.classList.add('addButton');
       addButton.setAttribute('id', 'addButton');
-      //addButton.setAttribute('type', 'submit');
       addButton.innerText = "+"
 
       prodContainer.append(prodImage, itemTitle, itemPrice, likeButton, addButton);
 
       document.querySelector('#inventory').append(prodContainer);
     });
-    console.log(displayCategories)
-  }
+  };
 
   // ALL PRODUCTS DISPLAY ON LOAD
 
   const displayAll = inventory.filter((item) => {
     return item.category.all === true;
   });
-  console.log(displayAll)
   displayItems(displayAll);
 
   // ALL PRODUCTS BUTTON FILTER
   const allButton = document.querySelector('#all-button');
-  allButton.addEventListener('click', function (e) {
+  allButton.addEventListener('click', (e) => {
     const allProducts = inventory.filter((item) => {
       return item.category.all === true;
     });
-    console.log(allButton)
     displayItems(allProducts);
   });
 
@@ -92,11 +78,10 @@ onValue(inventoryRef, (data) => {
   // FEATURED BUTTON PRODUCTS FILTER
 
   const featuredButton = document.querySelector('#featured-button');
-  featuredButton.addEventListener('click', function (e) {
+  featuredButton.addEventListener('click', (e) => {
     const featuredProducts = inventory.filter((item) => {
       return item.category.featured === true && parseInt(item.stock) > 0;
     });
-    console.log(featuredProducts)
     displayItems(featuredProducts);
   });
 
@@ -104,7 +89,7 @@ onValue(inventoryRef, (data) => {
   // BESTSELLER PRODUCTS FILTER
 
   const bestsellerButton = document.querySelector('#bestseller-button');
-  bestsellerButton.addEventListener('click', function (e) {
+  bestsellerButton.addEventListener('click', (e) => {
     const bestsellerProducts = inventory.filter((item) => {
       return item.category.bestseller === true && parseInt(item.stock) > 0;
     });
@@ -115,11 +100,10 @@ onValue(inventoryRef, (data) => {
   // LATEST BUTTON PRODUCTS FILTER
 
   const latestButton = document.querySelector('#latest-button');
-  latestButton.addEventListener('click', function (e) {
+  latestButton.addEventListener('click', (e) => {
     const latestProducts = inventory.filter((item) => {
       return item.category.latest === true && parseInt(item.stock) > 0;
     });
-
     displayItems(latestProducts);
   });
 });
@@ -128,13 +112,8 @@ onValue(inventoryRef, (data) => {
 // EVENT LISTENER FOR ADD TO CART
 
 ulElement.addEventListener('click', (e) => {
-  console.log(e.target)
-  // only run code if the user clicks on the BUTTON element
   if (e.target.nodeName === "BUTTON") {
-    // get the id attribute value from the list item
-    //  pass the id attribute value as an argument to our addToFavs function
-    addToCart(e.target.parentElement.id)
-
+    addToCart(e.target.parentElement.id);
   };
 });
 
@@ -160,12 +139,13 @@ const addToCart = (productID) => {
     if (addedProduct.stock < 1) {
       alert('Item not available! Please check back at a later time!')
     } else {
-      // our new product added to cart object
       push(cartRef, showCart);
-  
     }
   });
 };
+
+
+// SNAPSHOT OF NUMBER OF CART ITEMS
 
 onValue(cartRef, (snapshot) => {
   const cartRefData = snapshot.val();
@@ -174,11 +154,12 @@ onValue(cartRef, (snapshot) => {
   const cart = document.getElementById("cart").innerHTML = openCart;
 });
 
+
+// HAMBURGER MENU
+
 const button = document.getElementById("ham-button");
 const nav = document.getElementById("main-menu");
 
 button.addEventListener('click', () => {
   nav.classList.toggle('show');
-
-
 });

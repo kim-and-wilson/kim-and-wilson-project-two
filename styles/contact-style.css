@@ -444,15 +444,28 @@ button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  height: 450px;
   -webkit-box-shadow: 0 0 10px #4c4c4c;
           box-shadow: 0 0 10px #4c4c4c;
 }
+.contact-form .contact-parent .form-area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
 .contact-form .contact-parent .contact-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   background: url(./../assets/contact.jpg);
   background-repeat: no-repeat;
   background-size: center;
   width: 260px;
-  height: 450px;
+  height: auto;
   padding: 20px 20px;
 }
 .contact-form .contact-parent .contact-info h2 {
@@ -465,6 +478,13 @@ button {
 }
 
 form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   padding: 40px 0;
 }
 
@@ -477,16 +497,17 @@ fieldset {
       -ms-flex-pack: justify;
           justify-content: space-between;
   line-height: 2;
-  width: 40%;
 }
 fieldset input {
   border: 0;
-  width: 150px;
+  width: 100px;
 }
 
 .first-row,
 .second-row {
-  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .first-name,
@@ -495,7 +516,6 @@ fieldset input {
 .email,
 input {
   border-bottom: 1px solid #4c4c4c;
-  width: 150px;
 }
 
 input::-webkit-input-placeholder {
@@ -547,6 +567,7 @@ button:hover {
       -ms-flex-pack: end;
           justify-content: flex-end;
 }
+
 
 @media (max-width: 1000px) {
   .footer-parent {
@@ -632,6 +653,7 @@ button:hover {
     width: 100%;
   }
 }
+
 footer {
   background-image: url(../assets/footer.jpg);
   background-repeat: no-repeat;

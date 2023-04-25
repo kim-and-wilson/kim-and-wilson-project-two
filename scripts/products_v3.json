@@ -1,118 +1,134 @@
-
-{ 
-
-      "inventory": {
-          "product1": {
-            "title": "American Marigold",
-            "url": "assets/p2.jpeg",
-            "price": "23.45",
-            "stock": "0",
-            "isFavourited": false,
-            "alt": "",
-            "id": "01",
-            "category": {
-                    "bestseller": false,
-                    "featured": false,
-                    "latest": false
-                  }
-          },
-          "product2": {
-            "title": "Black Eyed Susan",
-            "url": "assets/p1.jpeg",
-            "price": "25.45",
-            "stock": "20",
-            "isFavourited": false,
-            "alt": "",
-            "id": "02",
-            "category": {
-              "bestseller": false,
-              "featured": false,
-              "latest": true
-            }
-          },
-          "product3": {
-            "title": "Bleeding Heart",
-            "url": "assets/p3.jpeg",
-            "price": "30.45",
-            "stock": "20",
-            "isFavourited": false,
-            "alt": "",
-            "id": "03",
-            "category": {
-              "bestseller": false,
-              "featured": true,
-              "latest": true
-            } 
-          },
-          "product4": {
-            "title": "Bloody Cranesbill",
-            "url": "assets/p4.jpeg",
-            "price": "45.00",
-            "stock": "20",
-            "isFavourited": false,
-            "alt": "",
-            "id": "04",
-            "category": {
-              "bestseller": false,
-              "featured": false,
-              "latest": true
-            }
-          },
-          "product5": {
-            "title": "Butterfly Weed",
-            "url": "assets/p5.jpeg",
-            "price": "50.45",
-            "stock": "20",
-            "isFavourited": false,
-            "alt": "",
-            "id": "05",
-            "category": {
-              "bestseller": true,
-              "featured": true,
-              "latest": false
-            }
-          },
-          "product6": {
-            "title": "Common Yarrow",
-            "url": "assets/p6.jpeg",
-            "price": "65.00",
-            "stock": "20",
-            "isFavourited": false,
-            "alt": "",
-            "id": "06",
-            "category": {
-              "bestseller": true,
-              "featured": false,
-              "latest": false
-            }
-          },
-          "product7": {
-            "title": "Doublefile Viburnum",
-            "url": "assets/p7.jpeg",
-            "price": "67.45",
-            "stock": "20",
-            "isFavourited": false,
-            "alt": "",
-            "id": "07",
-            "category": {
-              "bestseller": true,
-              "featured": false,
-              "latest": false
-            }
-          },
-          "product8": {
-            "title": "Feather Reed Grass",
-            "url": "assets/p8.jpeg",
-            "price": "20.00",
-            "stock": "20",
-            "isFavourited": false,
-            "alt": "",
-            "id": "08",
-            "category": {
-              "bestseller": false,
-              "featured": true,
-              "latest": false
-            }
-          }
-      } 
+{
+  "inventory": {
+    "product1": {
+      "alt": "Picture of American Marigold plant",
+      "category": {
+        "all": true,
+        "bestseller": true,
+        "featured": true,
+        "latest": true
+      },
+      "id": "01",
+      "isFavourited": false,
+      "price": "$23.45",
+      "stock": "0",
+      "title": "American Marigold",
+      "url": "assets/p2.jpeg"
+    },
+    "product2": {
+      "alt": "Picture of Black Eyed Susan plant",
+      "category": {
+        "all": true,
+        "bestseller": false,
+        "featured": false,
+        "latest": true
+      },
+      "id": "02",
+      "isFavourited": false,
+      "price": "$25.45",
+      "stock": "20",
+      "title": "Black Eyed Susan",
+      "url": "assets/p1.jpeg"
+    },
+    "product3": {
+      "alt": "Picture of Bleeding Heart plant",
+      "category": {
+        "all": true,
+        "bestseller": false,
+        "featured": true,
+        "latest": true
+      },
+      "id": "03",
+      "isFavourited": false,
+      "price": "$30.45",
+      "stock": "20",
+      "title": "Bleeding Heart",
+      "url": "assets/p3.jpeg"
+    },
+    "product4": {
+      "alt": "Picture of Bloody Cranesbill plant",
+      "category": {
+        "all": true,
+        "bestseller": false,
+        "featured": false,
+        "latest": true
+      },
+      "heartIcon": "♥",
+      "id": "04",
+      "isFavourited": false,
+      "plusIcon": "+",
+      "price": "$45.00",
+      "stock": "20",
+      "title": "Bloody Cranesbill",
+      "url": "assets/p4.jpeg"
+    },
+    "product5": {
+      "alt": "Picture of Butterfly Weed plant",
+      "category": {
+        "all": true,
+        "bestseller": true,
+        "featured": true,
+        "latest": false
+      },
+      "heartIcon": "♥",
+      "id": "05",
+      "isFavourited": false,
+      "plusIcon": "+",
+      "price": "$50.45",
+      "stock": "20",
+      "title": "Butterfly Weed",
+      "url": "assets/p5.jpeg"
+    },
+    "product6": {
+      "alt": "Picture of Common Yarrow plant",
+      "category": {
+        "all": true,
+        "bestseller": true,
+        "featured": false,
+        "latest": false
+      },
+      "heartIcon": "♥",
+      "id": "06",
+      "isFavourited": false,
+      "plusIcon": "+",
+      "price": "$65.00",
+      "stock": "20",
+      "title": "Common Yarrow",
+      "url": "assets/p6.jpeg"
+    },
+    "product7": {
+      "alt": "Picture of Doublefile Viburnum plant",
+      "category": {
+        "all": true,
+        "bestseller": true,
+        "featured": false,
+        "latest": false
+      },
+      "heartIcon": "♥",
+      "id": "07",
+      "isFavourited": false,
+      "plusIcon": "+",
+      "price": "$67.45",
+      "stock": "20",
+      "title": "Doublefile Viburnum",
+      "url": "assets/p7.jpeg"
+    },
+    "product8": {
+      "alt": "Picture of Feather Reed Grass plant",
+      "category": {
+        "all": true,
+        "bestseller": false,
+        "featured": true,
+        "latest": false
+      },
+      "heartIcon": "♥",
+      "id": "08",
+      "isFavourited": false,
+      "plusIcon": "+",
+      "price": "$20.00",
+      "stock": "20",
+      "title": "Feather Reed Grass",
+      "url": "assets/p8.jpeg"
     }
+  }
+}
