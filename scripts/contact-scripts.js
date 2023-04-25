@@ -47,3 +47,11 @@ formElement.addEventListener('submit', function(e) {
     }
 });
 
+const button = document.getElementById("ham-button");
+const nav = document.getElementById("main-menu");
+
+button.addEventListener('click', () => {
+  nav.classList.toggle('show');
+
+
+});
