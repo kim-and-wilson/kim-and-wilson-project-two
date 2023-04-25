@@ -106,7 +106,7 @@ onValue(inventoryRef, (data) => {
   const bestsellerButton = document.querySelector('#bestseller-button');
   bestsellerButton.addEventListener('click', function (e) {
     const bestsellerProducts = inventory.filter((item) => {
-      return item.category.bestseller === true;
+      return item.category.bestseller === true && parseInt(item.stock) > 0;
     });
     displayItems(bestsellerProducts);
   });
@@ -117,7 +117,7 @@ onValue(inventoryRef, (data) => {
   const latestButton = document.querySelector('#latest-button');
   latestButton.addEventListener('click', function (e) {
     const latestProducts = inventory.filter((item) => {
-      return item.category.latest === true;
+      return item.category.latest === true && parseInt(item.stock) > 0;
     });
 
     displayItems(latestProducts);
@@ -158,7 +158,7 @@ const addToCart = (productID) => {
       }
   
     if (addedProduct.stock < 1) {
-      alert('Item not available!')
+      alert('Item not available! Please check back at a later time!')
     } else {
       // our new product added to cart object
       push(cartRef, showCart);

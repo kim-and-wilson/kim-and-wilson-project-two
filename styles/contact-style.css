@@ -477,7 +477,7 @@ fieldset {
       -ms-flex-pack: justify;
           justify-content: space-between;
   line-height: 2;
-  width: 47%;
+  width: 40%;
 }
 fieldset input {
   border: 0;
@@ -486,16 +486,14 @@ fieldset input {
 
 .first-row,
 .second-row {
-  width: 80%;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  width: 90%;
 }
 
 .first-name,
 .last-name,
 .phone,
-.email {
+.email,
+input {
   border-bottom: 1px solid #4c4c4c;
   width: 150px;
 }
@@ -558,8 +556,9 @@ button:hover {
             flex-direction: column;
   }
   .contact-parent .contact-info {
+    background-position: center;
     width: auto;
-    height: 200px;
+    height: auto;
   }
 }
 @media (max-width: 660px) {
