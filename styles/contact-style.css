@@ -568,29 +568,6 @@ button:hover {
           justify-content: flex-end;
 }
 
-@media (max-width: 965px) {
-  .contact-parent {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    height: auto;
-  }
-  .contact-info {
-    background-size: default;
-  }
-}
-@media (max-width: 660px) {
-  .first-row,
-  .second-row {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -ms-flex-line-pack: center;
-        align-content: center;
-  }
-}
 footer {
   background-image: url(../assets/footer.jpg);
   background-repeat: no-repeat;

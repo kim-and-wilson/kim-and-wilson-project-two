@@ -118,22 +118,17 @@ button {
     justify-content: flex-end;
 }
 
-@media (max-width: 965px) {
-    .contact-parent {
-        flex-direction: column;
-        height: auto;
-    }
+// @media (max-width: 965px) {
+//     .contact-parent {
+//         flex-direction: column;
+//         height: auto;
+//         }   
+//     }   
 
-    .contact-info {
-        background-size: default;
-
-        }
-    }
-
-@media (max-width: 660px) {
-    .first-row,
-    .second-row {
-        flex-direction: column;
-        align-content: center;
-    }    
-}
+// @media (max-width: 660px) {
+//     .first-row,
+//     .second-row {
+//         flex-direction: column;
+//         align-content: center;
+//     }    
+// }
