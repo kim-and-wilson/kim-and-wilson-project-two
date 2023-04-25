@@ -9,6 +9,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./styles/style.css">
+        <script src="https://kit.fontawesome.com/f8f63e38c0.js" crossorigin="anonymous"></script>
     <title>Pronia Plants</title>
 </head>
 
@@ -34,22 +35,30 @@
 
         <section class="header-main">
             <div class="wrapper">
+                
                 <div class="main-head-container">
                     <a href="./index.html"><img src="./assets/logo.png" alt="Pronia logo"></a> 
                 </div>
 
-                <div class="header-nav-container">
-                    <ul>
+                <nav class="header-nav-container">
+                    <button class="ham-button" id="ham-button">
+                        <i class="fa-solid fa-bars" id="dropDown"></i>
+                      </button>
+                    <ul class="main-menu" id="main-menu">
                         <li><a href="./index.html">Home</a></li>
                         <li><a href="#blog">Blog</a></li>
                         <li><a href="./contact.html">Contact Us</a></li>
                     </ul>
-                </div>
+                </nav>
+                
 
-                <div class="shopping-bag-container">
+                <div  class="shopping-bag-container">
                     <img src="./assets/icons/shopping-bag.svg" alt="Shopping bag icon">
-                </div>
-            </div>
+                     <span class="sup" id="cart"></span>
+                </div>  <!-- end of shopping bag container -->
+
+                
+            </div>  <!-- end of wrapper -->
         </section>
     </header>
 
@@ -63,9 +72,9 @@
                     <button class="hero-button"><a href="#">Discover Now</a></button>
                 </div>
                 
-                <div class="header-image-container">
+                <!-- <div class="header-image-container">
                     <img src="./assets/header.png" alt="Plants in pots">
-                </div>
+                </div> -->
             </div>
         </section>
 
@@ -112,122 +121,33 @@
                 </div>
                 <div class="product-buttons-section">
                     <div class="product-button-1">
-                        <button class="product-buttons">Featured</button>
+                        <button id="all-button">All</button>
                     </div>
                     <div class="product-button-2">
-                        <button class="product-buttons">Bestseller</button>
+                        <button id="featured-button">Featured</button>
                     </div>
                     <div class="product-button-3">
-                        <button class="product-buttons">Latest</button>
+                        <button id="bestseller-button">Bestseller</button>
+                    </div>
+                    <div class="product-button-4">
+                        <button id="latest-button">Latest</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="plant-list">
+        <section id ="plant" class="plant-list flexContainer">
             <div class="wrapper">
-                <div class="plant-list-item-1">
-                    <div class="relative-parent">
-                        <img src="./assets/p2.jpeg" alt="Picture of American Merigold">
-
-                        <div class="absolute-child">
-                            <img src="./assets/icons/cart.svg" alt="Add American Marigold to cart">
-                        </div>
-                    </div>
-                    <h4>American Marigold</h4>
-                    <p>$23.45</p>
-                </div>
-
-                <div class="plant-list-item-2">
-                    <div class="relative-parent">
-                        <img src="./assets/p1.jpeg" alt="Picture of Black Eyed Susan">
-
-                        <div class="absolute-child">
-                            <img src="./assets/icons/cart.svg" alt="Add Black Eyed Susan to cart">
-                        </div>
-                    </div>
-                    <h4>Black Eyed Susan</h4>
-                    <p>$25.45</p>
-                </div>
-
-                <div class="plant-list-item-3">
-                    <div class="relative-parent">
-                        <img src="./assets/p3.jpeg" alt="Picture of Bleeding Heart">
-
-                        <div class="absolute-child">
-                            <img src="./assets/icons/cart.svg" alt="Add Bleeding Heart to cart">
-                        </div>
-                    </div>
-                    <h4>Bleeding Heart</h4>
-                    <p>$30.45</p>
-                </div>
-
-                <div class="plant-list-item-4">
-                    <div class="relative-parent">
-                        <img src="./assets/p4.jpeg" alt="Picture of Bloody Cranesbill">
-
-                        <div class="absolute-child">
-                            <img src="./assets/icons/cart.svg" alt="Add Bloody Cranesbill to cart">
-                        </div>
-                    </div>
-                    <h4>Bloody Cranesbill</h4>
-                    <p>$45.00</p>
-                </div>
-
-                <div class="plant-list-item-5">
-                    <div class="relative-parent">
-                        <img src="./assets/p5.jpeg" alt="Picture of Butterfly Weed">
-
-                        <div class="absolute-child">
-                            <img src="./assets/icons/cart.svg" alt="Add Butterfly Weed to cart">
-                        </div>
-                    </div>
-                    <h4>Butterfly Weed</h4>
-                    <p>$50.45</p>
-                </div>
-
-                <div class="plant-list-item-6" id="plant-list-item-6">
-                    <div class="relative-parent">
-                        <img src="./assets/p6.jpeg" alt="Picture of Common Yarrow">
-
-                        <div class="absolute-child">
-                            <img src="./assets/icons/cart.svg" alt="Add Common Yarrow to cart">
-                        </div>
-                    </div>
-                    <h4>Common Yarrow</h4>
-                    <p>$65.00</p>
-                </div>
-
-                <div class="plant-list-item-7">
-                    <div class="relative-parent">
-                        <img src="./assets/p7.jpeg" alt="Picture of Doublefile Viburnum">
-
-                        <div class="absolute-child">
-                            <img src="./assets/icons/cart.svg" alt="Add Doublefile Viburnum to cart">
-                        </div>
-                    </div>
-                    <h4>Doublefile Viburnum</h4>
-                    <p>$67.45</p>
-                </div>
-
-                <div class="plant-list-item-8">
-                    <div class="relative-parent">
-                        <img src="./assets/p8.jpeg" alt="Picture of Feather Reed Grass">
-
-                        <div class="absolute-child">
-                            <img src="./assets/icons/cart.svg" alt="Add Doublefile Viburnum to cart">
-                        </div>
-                    </div>
-                    <h4>Feather Reed Grass</h4>
-                    <p>$20.00</p>
-                </div>
+                <ul id="inventory" class="inventory">
+                    
+                </ul>
             </div>
         </section>
 
         <!-- Collection Section -->
         <section class="collection">
             <div class="wrapper">
-                <div class="collection-parent collect-parent-1">
+                <div class="collection-parent">
                     <div class="collection-child collection-child-1">
                         <p>Collection of Cactus</p>
                         <h3>Pottery Pots & Plant</h3>
@@ -239,9 +159,7 @@
                         <h3>Plant Port</h3>
                         <button id="shop-now">Shop Now</button>
                     </div>
-                </div>
 
-                <div class="collection-parent collection-parent-2">
                     <div class="collection-child collection-child-3">
                         <p>New Collection</p>
                         <h3>Plant Port</h3>
@@ -272,23 +190,29 @@
         <section class="blog-body" id="blog-body">
             <div class="wrapper blog-post-parent">
                 <div class="blog-post-1 blog-post-child">
-                    <p class="blog-date"> By: Admin 24 April 2021</p>
-                    <h4>Aenean Vulputate Lorem</h4>
-                    <p class="blog-text">Lorem ipsum dolor sit amet, consecteturl adipisl elit, sed do eiusmod tempor incidio ut labore et dolore magna aliqua.</p>
+                    <div class="blog-text">
+                        <p class="blog-date"> By: Admin 24 April 2021</p>
+                        <h4>Aenean Vulputate Lorem</h4>
+                        <p class="blog-text">Lorem ipsum dolor sit amet, consecteturl adipisl elit, sed do eiusmod tempor incidio ut labore et dolore magna aliqua.</p>
+                    </div>
                     <img src="./assets/blog3.jpeg" alt="Person holding a tray of succulents">
                 </div>
 
                 <div class="blog-post-2 blog-post-child">
-                    <p class="blog-date"> By: Admin 24 April 2021</p>
-                    <h4>There Are Many Variations</h4>
-                    <p class="blog-text">Lorem ipsum dolor sit amet, consecteturl adipisl elit, sed do eiusmod tempor incidio ut labore et dolore magna aliqua.</p>
+                    <div class="blog-text">
+                        <p class="blog-date"> By: Admin 24 April 2021</p>
+                        <h4>There Are Many Variations</h4>
+                        <p class="blog-text">Lorem ipsum dolor sit amet, consecteturl adipisl elit, sed do eiusmod tempor incidio ut labore et dolore magna aliqua.</p>
+                    </div>
                     <img src="./assets/blog1.jpeg" alt="Picture of a catctus in the sun">
                 </div>
 
                 <div class="blog-post-3 blog-post-child">
-                    <p class="blog-date"> By: Admin 24 April 2021</p>
-                    <h4>Maecenas Laoreet Massa</h4>
-                    <p class="blog-text">Lorem ipsum dolor sit amet, consecteturl adipisl elit, sed do eiusmod tempor incidio ut labore et dolore magna aliqua.</p>
+                    <div class="blog-text">
+                        <p class="blog-date"> By: Admin 24 April 2021</p>
+                        <h4>Maecenas Laoreet Massa</h4>
+                        <p class="blog-text">Lorem ipsum dolor sit amet, consecteturl adipisl elit, sed do eiusmod tempor incidio ut labore et dolore magna aliqua.</p>
+                    </div>
                     <img src="./assets/blog2.jpeg" alt="Person with a shovel about to unroot a plant from its pot">
                 </div>
             </div>
@@ -317,9 +241,10 @@
                     </div>     
                 </div>
 
+
                 <div class="footer-column-child footer-column-2">
-                    <h4>Useful Links</h4>
-                    <ul>
+                    <span class="links"><h4>Useful Links</h4></span>
+                    <ul class="footer-menu" id="footer-menu">
                         <li><a href="#about">About Pronia</a></li>
                         <li><a href="#shopinfo">How to shop</a></li>
                         <li><a href="#faq">FAQ</a></li>
@@ -327,10 +252,10 @@
                         <li><a href="#login">Log in</a></li>
                     </ul>
                 </div>
-
+    
                 <div class="footer-column-child footer-column-3">
-                    <h4>My Account</h4>
-                    <ul>
+                    <span class="account"><h4>My Account</h4></span>
+                    <ul class="footer-menu" id="footer-menu">
                         <li><a href="#login">Sign In</a></li>
                         <li><a href="#cart">View Cart</a></li>
                         <li><a href="#wishlist">My Wishlist</a></li>
@@ -338,10 +263,10 @@
                         <li><a href="#help">Help</a></li>
                     </ul>
                 </div>
-
+    
                 <div class="footer-column-child footer-column-4">
-                    <h4>Our Service</h4>
-                    <ul>
+                    <span class="services"><h4>Our Service</h4></span>
+                    <ul class="footer-menu" id="footer-menu">
                         <li><a href="#paymentmethod">Payment Methods</a></li>
                         <li><a href="#moneyback">Money Guarantee!</a></li>
                         <li><a href="#returns">Returns</a></li>
@@ -351,12 +276,13 @@
                 </div>
 
                 <div class="footer-column-child footer-column-5">
-                    <h4>Got Question? Call Us <span class="number">123 456 789</span></h4>
-                    <p>123 Narnia Lane</p>
-                    <p>Toronto, Ontario</p>
-                    <p>A1A 1A1</p>
+                    <h4>Got Question? Call Us! <span class="number">123 456 789</span></h4>
+                    <p>123 Narnia Lane<br>
+                    Toronto, Ontario<br>
+                    A1A 1A1</p>
                 </div>
             </div>
+
 
             <div class="copyright" id="copyright">
                 <p>&copy; 2023 Pronia</p>
@@ -368,8 +294,3 @@
 </body>
 
 </html>
-
-<!-- testing for merge -->
-
-
-<!-- testing for merge kim  -->

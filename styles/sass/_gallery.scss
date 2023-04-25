@@ -1,9 +1,4 @@
-$green: #abd373;
-$darkeygrey: #4c4c4c;
-$black: #000;
-$lightgrey: #f6f7fb;
-$white: #fff;
-$faintblue: #88cce2;
+@import './variables';
 
 .gallery{
     background: $white;
@@ -57,6 +52,7 @@ $faintblue: #88cce2;
     }
 
     button:active,
+    button:hover,
     button:focus {
         color: $green;
         border: 1px dashed $green;
@@ -66,31 +62,79 @@ $faintblue: #88cce2;
 .plant-list {
     background-color: $white;
 
-    .wrapper {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
+    // .wrapper {
+    //     display: flex;
+    //     flex-wrap: wrap;
+    //     justify-content: space-between;
+
+    // }
 }
 
-.relative-parent {
+.inventory {
     display: flex;
-    position: relative;
-
-    .absolute-child {
-        display: flex;
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        box-shadow: 5px 5px 5px lightgrey;
-
-        // had to use light grey above as the "lightgrey" on design sheet shows up light blue and the "faintblue" shows up lightgrey but was way too light and didn't show on website
-
-        img {
-            padding: 8px;
-            width: 25px;
-            height: auto;
-        }
-    }
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-content: center;
 }
 
+
+
+.likeButton {
+    cursor: pointer;
+    font-size: 35px;
+    background: transparent;
+    border: none;
+    color: lightgrey;
+    position: relative;
+    bottom: 350px;
+    right: -250px;
+
+}
+
+.addButton {
+        background: transparent;
+        position: relative;
+        bottom: 130px;
+        left: -30px;
+        box-shadow: 5px 5px 5px lightgrey;
+        padding: 8px;
+        width: 40px;
+        height: 40px;
+        margin-bottom: 20px;
+        }
+
+
+.likeButton:disabled {
+  color: lightgray;
+  cursor: auto;
+ }
+
+.likeButton:active,
+.likeButton:hover:not([disabled]),
+.likeButton:focus {
+  color: palevioletred;
+}
+
+
+
+@media (max-width: 614px) {
+    .wrapper .inventory {
+        width: 100%;
+        flex-direction: column;
+        align-content: center;
+    }
+
+    .product-buttons-section {
+
+        flex-direction: column;
+        align-content: center;
+        
+        button { 
+        margin-bottom: 10px;
+        width: 8rem;
+        border: 3px solid $green;
+        background-color: #abd3731f;
+
+    }
+}
+}

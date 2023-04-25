@@ -47,3 +47,12 @@ formElement.addEventListener('submit', function(e) {
     }
 });
 
+
+// HAMBURGER MENU
+
+const button = document.getElementById("ham-button");
+const nav = document.getElementById("main-menu");
+
+button.addEventListener('click', () => {
+  nav.classList.toggle('show');
+});

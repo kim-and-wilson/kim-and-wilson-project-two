@@ -1,9 +1,4 @@
-$green: #abd373;
-$darkeygrey: #4c4c4c;
-$black: #000;
-$lightgrey: #f6f7fb;
-$white: #fff;
-$faintblue: #88cce2;
+@import './variables';
 
 footer {
     background-image: url(../assets/footer.jpg);
@@ -59,6 +54,7 @@ footer a {
 .number {
         display: inline-block;
         white-space: nowrap;
+
 }
 
 .copyright {
@@ -71,3 +67,72 @@ footer a {
         font-size: 0.8rem;
     }
 }
+
+@media (max-width: 800px) {
+
+    .footer-parent {
+        display: block;
+        flex-direction: wrap;
+        justify-content: space-evenly;
+       }  
+    }
+
+
+
+@media (max-width: 720px) {
+
+
+    .footer-parent {
+        display: block;
+        flex-direction: wrap;
+        justify-content: space-evenly;
+       }   
+
+    .footer-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+        
+    .footer-menu.show {
+        position:relative;
+        display: block;
+        justify-content: center;
+        background-color: #abd37321;
+
+
+    }
+
+.ham-button {
+        display: block;
+        }
+}
+
+@media (max-width: 660px) {
+
+    footer {
+        position: relative;
+    }
+
+.footer-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+.footer-menu.show {
+    display: flex;
+    }
+
+.footer-parent {
+    display: block;
+   }   
+
+.links .account .services {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }    
+
+}                  
+
