@@ -560,7 +560,6 @@ button {
   .pay-info-container-2,
   .pay-info-container-3 {
     width: 80%;
-    margin-bottom: 20px;
   }
   .hero-text-container h1,
   .hero-text-container p {
@@ -637,18 +636,8 @@ button {
 .plant-list {
   background-color: #fff;
 }
-.plant-list .wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
 
-.plant-list ul {
+.inventory {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -696,10 +685,9 @@ button {
   color: palevioletred;
 }
 
-
 @media (max-width: 614px) {
-  .inventory ul {
-
+  .wrapper .inventory {
+    width: 100%;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -707,18 +695,19 @@ button {
     -ms-flex-line-pack: center;
         align-content: center;
   }
-
-}
-@media (max-width: 600px) {
   .product-buttons-section {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    -ms-flex-line-pack: center;
+        align-content: center;
   }
   .product-buttons-section button {
-    width: 150px;
-
+    margin-bottom: 10px;
+    width: 8rem;
+    border: 3px solid #abd373;
+    background-color: rgba(171, 211, 115, 0.1215686275);
   }
 }
 .collection {

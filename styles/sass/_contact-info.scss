@@ -1,4 +1,4 @@
-@import 'color-scheme';
+@import './variables';
 
 .wrapper {
     width: 60%;
@@ -65,7 +65,7 @@ fieldset {
     display: flex;
     justify-content: space-between;
     line-height: 2;
-    width: calc(47%);
+    width: calc(40%);
 
     input {
         border: 0;
@@ -75,14 +75,15 @@ fieldset {
 
 .first-row,
 .second-row {
-    width: 80%;
-    justify-content: space-between;
+    width: 90%;
+    // justify-content: space-between;
 }
 
 .first-name,
 .last-name,
 .phone,
-.email {
+.email,
+input {
     border-bottom: 1px solid $darkeygrey;
     width: 150px;
 }
@@ -118,8 +119,9 @@ button {
         flex-direction: column;
 
     .contact-info {
+        background-position: center;
         width: auto;
-        height: 200px;
+        height: auto;
     }
     }
 }
