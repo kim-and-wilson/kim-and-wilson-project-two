@@ -1117,8 +1117,30 @@ footer a {
   font-size: 0.8rem;
 }
 
-@media (max-width: 768px) {
-  .main-menu {
+@media (max-width: 800px) {
+  .footer-parent {
+    display: block;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: wrap;
+            flex-direction: wrap;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+  }
+}
+@media (max-width: 720px) {
+  .footer-parent {
+    display: block;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: wrap;
+            flex-direction: wrap;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+  }
+  .footer-menu {
     display: none;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -1126,7 +1148,7 @@ footer a {
             flex-direction: column;
     width: 100%;
   }
-  .main-menu.show {
+  .footer-menu.show {
     position: relative;
     display: block;
     -webkit-box-pack: center;
@@ -1138,11 +1160,11 @@ footer a {
     display: block;
   }
 }
-@media (max-width: 576px) {
+@media (max-width: 660px) {
   footer {
     position: relative;
   }
-  .main-menu {
+  .footer-menu {
     display: none;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -1150,7 +1172,7 @@ footer a {
             flex-direction: column;
     width: 100%;
   }
-  .main-menu.show {
+  .footer-menu.show {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
