@@ -1,11 +1,20 @@
-@import 'color-scheme';
+
+@import './variables';
+
 
 .header-top {
     background: $green;
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+
+    
 
     .header-top-container {
         display: flex;
         justify-content: space-between;
+        position: sticky;
+
     }
 
         p {
@@ -35,14 +44,55 @@
 .header-main {
     background: $white;
     padding: 20px 0px;
+    position: sticky;
+    display: flex;
+    justify-content: space-between;
+
+    
+
 
     .wrapper {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        position: sticky;
     }
 }
+
+
+.main-menu {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;;
+
+    a {
+        padding: 0px 15px;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-weight: 400;
+        font-size: 0.8rem;
+        color: $black;
+    }
+}
+
+.ham-button {
+    background-color: transparent;
+    border: 5px;
+    color: $black;
+    cursor: pointer;
+    font-size: 30px;
+    padding: 10px;
+    margin: 0;
+    display: none;
+}
+
+.ham-button:focus {
+    outline: none;
+}
+
+
+
 
 .shopping-bag-container {
 
@@ -58,29 +108,52 @@ button {
     cursor: pointer;
     background: transparent;
     border: none;
-  
-  }
+ 
+}
 
 .sup {
     position: relative;
     bottom: 1ex; 
     font-size: 80%;
-  }
-
-.header-nav-container li {
-    display: inline-block;
-
-    a {
-        padding: 0px 15px;
-        text-transform: uppercase;
-        text-decoration: none;
-        font-weight: 400;
-        font-size: 0.8rem;
-        color: $black;
-    }
 }
+
+
+
 
 @media (max-width: 768px) {
-    
+
+    .main-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+        
+    .main-menu.show {
+        position:relative;
+        display: block;
+        justify-content: center;
+        background-color: #abd37321;
+
+
+    }
+
+.ham-button {
+        display: block;
+        }
 }
 
+@media (max-width: 576px) {
+
+    .main-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        }    
+    
+            .main-menu.show {
+                display: flex;
+                }
+    
+    
+        }
+    

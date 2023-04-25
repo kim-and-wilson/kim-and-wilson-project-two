@@ -9,6 +9,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./styles/contact-style.css">
+        <script src="https://kit.fontawesome.com/f8f63e38c0.js" crossorigin="anonymous"></script>
 
     <title>Pronia Plants</title>
 </head>
@@ -32,25 +33,33 @@
             </div>
         </section>
     
-        <section class="header-main">
+        
+        <nav class="header-main">
             <div class="wrapper">
+                
                 <div class="main-head-container">
-                    <a href="./index.html"><img src="./assets/logo.png" alt="Pronia logo"></a>
+                    <a href="./index.html"><img src="./assets/logo.png" alt="Pronia logo"></a> 
                 </div>
-    
-                <div class="header-nav-container">
-                    <ul>
+
+                <nav class="header-nav-container">
+                    <button class="ham-button" id="ham-button">
+                        <i class="fa-solid fa-bars" id="dropDown"></i>
+                      </button>
+                    <ul class="main-menu" id="main-menu">
                         <li><a href="./index.html">Home</a></li>
                         <li><a href="#blog">Blog</a></li>
                         <li><a href="./contact.html">Contact Us</a></li>
                     </ul>
-                </div>
-    
-                <div class="shopping-bag-container">
+                </nav>
+                
+
+                <div  class="shopping-bag-container">
                     <img src="./assets/icons/shopping-bag.svg" alt="Shopping bag icon">
-                </div>
-            </div>
-        </section>
+                     <span class="sup" id="cart"></span>
+                </div>  <!-- end of shopping bag container -->
+
+                </nav>
+            </div>  <!-- end of wrapper -->
     </header>
 
     <main>
@@ -183,6 +192,7 @@
         </div>
     </footer>
 
-<script src="./scripts/contact-scripts.js"></script>
+<script src="./scripts/contact-scripts.js" type="module"></script>
+<script src="./scripts/index-scripts.js" type="module"></script>
 </body>
 </html>ß

@@ -19,6 +19,7 @@ onValue(inventoryRef, (data) => {
     return allProducts[key];
   })
 
+
   const displayItems = (displayCategories) => {
     const inventoryElement = document.querySelector('#inventory')
     inventoryElement.innerHTML = '';
@@ -158,7 +159,20 @@ onValue(inventoryRef, (data) => {
     onValue(cartRef, (snapshot) => {
       const cartRefData = snapshot.val();
       const openCart = Object.keys(cartRefData || {}).length;
+    
       
       const cart = document.getElementById("cart").innerHTML = openCart;
       
   });
+
+
+  //Hamburger Dropdown Menu
+
+const button = document.getElementById("ham-button");
+const nav = document.getElementById("main-menu");
+
+button.addEventListener('click', () => {
+  nav.classList.toggle('show');
+
+
+});

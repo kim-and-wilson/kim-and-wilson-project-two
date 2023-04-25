@@ -9,6 +9,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./styles/style.css">
+        <script src="https://kit.fontawesome.com/f8f63e38c0.js" crossorigin="anonymous"></script>
     <title>Pronia Plants</title>
 </head>
 
@@ -32,32 +33,33 @@
             </div>
         </section>
 
-        <section class="header-main">
+        <nav class="header-main">
             <div class="wrapper">
+                
                 <div class="main-head-container">
                     <a href="./index.html"><img src="./assets/logo.png" alt="Pronia logo"></a> 
                 </div>
 
-                <div class="header-nav-container">
-                    <ul>
+                <nav class="header-nav-container">
+                    <button class="ham-button" id="ham-button">
+                        <i class="fa-solid fa-bars" id="dropDown"></i>
+                      </button>
+                    <ul class="main-menu" id="main-menu">
                         <li><a href="./index.html">Home</a></li>
                         <li><a href="#blog">Blog</a></li>
                         <li><a href="./contact.html">Contact Us</a></li>
                     </ul>
-                </div>
+                </nav>
+                
 
                 <div  class="shopping-bag-container">
                     <img src="./assets/icons/shopping-bag.svg" alt="Shopping bag icon">
                      <span class="sup" id="cart"></span>
-                    <ul id="cartContainer"
+                </div>  <!-- end of shopping bag container -->
 
-                    </ul>
-
-                
-                   
-                </div>
-            </div>
-        </section>
+                </nav>
+            </div>  <!-- end of wrapper -->
+        
     </header>
 
     <!-- Deals and Info Section -->
@@ -238,45 +240,45 @@
                         <img src="./assets/icons/dribble.svg" alt="Dribble icon link">
                     </div>     
                 </div>
-
-                <div class="footer-column-child footer-column-2">
-                    <h4>Useful Links</h4>
-                    <ul>
+<nav class="footer-main">
+                <nav class="footer-column-child footer-column-2">
+                    <span class="links"><h4>Useful Links</h4></span>
+                    <ul class="main-menu" id="main-menu">
                         <li><a href="#about">About Pronia</a></li>
                         <li><a href="#shopinfo">How to shop</a></li>
                         <li><a href="#faq">FAQ</a></li>
                         <li><a href="./contact.html">Contact us</a></li>
                         <li><a href="#login">Log in</a></li>
                     </ul>
-                </div>
+                </nav>
 
-                <div class="footer-column-child footer-column-3">
-                    <h4>My Account</h4>
-                    <ul>
+                <nav class="footer-column-child footer-column-3">
+                    <span class="account"><h4>My Account</h4></span>
+                    <ul class="main-menu" id="main-menu">
                         <li><a href="#login">Sign In</a></li>
                         <li><a href="#cart">View Cart</a></li>
                         <li><a href="#wishlist">My Wishlist</a></li>
                         <li><a href="#order">Track My Order</a></li>
                         <li><a href="#help">Help</a></li>
                     </ul>
-                </div>
+                </nav>
 
-                <div class="footer-column-child footer-column-4">
-                    <h4>Our Service</h4>
-                    <ul>
+                <nav class="footer-column-child footer-column-4">
+                    <span class="services"><h4>Our Service</h4></span>
+                    <ul class="main-menu" id="main-menu">
                         <li><a href="#paymentmethod">Payment Methods</a></li>
                         <li><a href="#moneyback">Money Guarantee!</a></li>
                         <li><a href="#returns">Returns</a></li>
                         <li><a href="#shipping">Shipping</a></li>
                         <li><a href="#privacypolicy">Privacy Policy</a></li>
                     </ul>
-                </div>
-
+                </nav>
+</nav>
                 <div class="footer-column-child footer-column-5">
-                    <h4>Got Question? Call Us <span class="number">123 456 789</span></h4>
-                    <p>123 Narnia Lane</p>
-                    <p>Toronto, Ontario</p>
-                    <p>A1A 1A1</p>
+                    <h4>Got Question? Call Us! <span class="number">123 456 789</span></h4>
+                    <p>123 Narnia Lane<br>
+                    Toronto, Ontario<br>
+                    A1A 1A1</p>
                 </div>
             </div>
 
