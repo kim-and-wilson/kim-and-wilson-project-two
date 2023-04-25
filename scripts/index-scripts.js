@@ -173,3 +173,12 @@ onValue(cartRef, (snapshot) => {
 
   const cart = document.getElementById("cart").innerHTML = openCart;
 });
+
+const button = document.getElementById("ham-button");
+const nav = document.getElementById("main-menu");
+
+button.addEventListener('click', () => {
+  nav.classList.toggle('show');
+
+
+});
