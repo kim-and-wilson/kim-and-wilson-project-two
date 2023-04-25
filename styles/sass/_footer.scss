@@ -59,6 +59,7 @@ footer a {
 .number {
         display: inline-block;
         white-space: nowrap;
+
 }
 
 .copyright {
@@ -71,3 +72,55 @@ footer a {
         font-size: 0.8rem;
     }
 }
+
+@media (max-width: 768px) {
+
+    .main-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+        
+    .main-menu.show {
+        position:relative;
+        display: block;
+        justify-content: center;
+        background-color: #abd37321;
+
+
+    }
+
+.ham-button {
+        display: block;
+        }
+}
+
+@media (max-width: 576px) {
+
+    footer {
+        position: relative;
+    }
+
+.main-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+.main-menu.show {
+        display: flex;
+    }
+
+.footer-parent {
+        display: block;
+                
+    }   
+
+.links .account .services {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }    
+
+}                  
+

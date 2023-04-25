@@ -83,11 +83,11 @@ $faintblue: #88cce2;
     img {
         margin-bottom: 40px;
     }
-  }
+}
 
 
 
-  .likeButton {
+.likeButton {
     cursor: pointer;
     font-size: 35px;
     background: transparent;
@@ -97,8 +97,7 @@ $faintblue: #88cce2;
     bottom: 350px;
     right: -250px;
 
-   
-  }
+}
 
 .addButton {
         background: transparent;
@@ -126,10 +125,36 @@ $faintblue: #88cce2;
   color: palevioletred;
 }
 
-@media (max-width: 614px) {
+@media (max-width: 820px) {
     .inventory {
+        display: block;
+        flex-direction: wrap;
         align-content: center;
-        justify-content: center;
-        align-items: center;
+        width: 80%;
+        margin-left: 60px;
+
+
+
     }
+}
+
+@media (max-width: 614px) {
+    .wrapper .inventory {
+        width: 80%;
+        flex-direction: column;
+        align-content: center;
+    }
+
+    .product-buttons-section {
+
+        flex-direction: column;
+        align-content: center;
+        
+        button { 
+        margin-bottom: 10px;
+        width: 8rem;
+        border: 3px solid $green;
+        background-color: #abd3731f;
+    }
+}
 }
